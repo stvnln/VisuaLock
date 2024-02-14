@@ -1,8 +1,7 @@
-# Project Name
+# VisuaLock
 
 ## Overview
-Brief description of the project and its purpose.
-
+A password system that utilizes images as passwords instead of the traditional text-based passwords. This login method will be particularly useful for older adults or those prone to forget passwords as images can be remembered easier.
 ## Tasks To Be Done
 
 - [ ] Login
