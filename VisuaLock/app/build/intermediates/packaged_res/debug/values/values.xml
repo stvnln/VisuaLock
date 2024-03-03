@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="grey">#999090</color>
     <color name="lavender">#8692f7</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
@@ -11,6 +12,13 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <string name="app_name">VisuaLock</string>
+    <string name="firebase_database_url" translatable="false">https://visualock-1765a-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">670767680986</string>
+    <string name="google_api_key" translatable="false">AIzaSyCdQzoVJAh1Ny4M7pNS-QechXOZe2OsQW4</string>
+    <string name="google_app_id" translatable="false">1:670767680986:android:2f6896cccdf131047d84e3</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCdQzoVJAh1Ny4M7pNS-QechXOZe2OsQW4</string>
+    <string name="google_storage_bucket" translatable="false">visualock-1765a.appspot.com</string>
+    <string name="project_id" translatable="false">visualock-1765a</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_home">Home</string>
     <string name="title_notifications">Notifications</string>

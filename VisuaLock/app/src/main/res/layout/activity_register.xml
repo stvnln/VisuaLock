@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Register"
-                android:textSize="36sp"
+                android:textSize="26sp"
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:textColor="@color/lavender"/>
@@ -40,7 +40,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/signup_name"
+                android:id="@+id/register_name"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="40dp"
                 android:padding="8dp"
@@ -52,23 +52,24 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/signup_email"
+                android:id="@+id/register_email"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="Email"
-                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawableLeft="@drawable/letter"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/signup_password"
+                android:id="@+id/register_password"
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="20dp"
                 android:padding="8dp"
                 android:hint="Password"
+                android:inputType="textPassword"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
@@ -76,7 +77,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/signup_button"
+                android:id="@+id/register_button"
                 android:text="Register"
                 android:textSize="18sp"
                 android:textColor="@color/white"
