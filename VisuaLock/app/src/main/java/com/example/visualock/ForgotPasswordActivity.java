@@ -2,6 +2,7 @@ package com.example.visualock;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,6 +20,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     private Button sendResetButton;
     private TextView feedbackTextView;
     private FirebaseAuth auth;
+    private Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,15 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         resetEmailEditText = findViewById(R.id.reset_email);
         sendResetButton = findViewById(R.id.send_reset_button);
         feedbackTextView = findViewById(R.id.text);
+        backButton = findViewById(R.id.backButton);
         auth = FirebaseAuth.getInstance();
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class));
+            }
+        });
 
         sendResetButton.setOnClickListener(new View.OnClickListener() {
             @Override

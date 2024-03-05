@@ -23,6 +23,7 @@ drawable letter
 id ForgotPasswordCardView
 id LoginCardView
 id RegisterCardView
+id backButton
 id container
 id forgot_passRedirectText
 id loginRedirectText
