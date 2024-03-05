@@ -1,34 +1,34 @@
 [
     {
-        "merged": "C:\\Users\\MinhLe\\.gradle\\daemon\\8.2\\com.example.visualock.app-mergeDebugResources-49:\\layout\\activity_register.xml",
-        "source": "C:\\Users\\MinhLe\\.gradle\\daemon\\8.2\\com.example.visualock.app-main-52:\\layout\\activity_register.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.2/com.example.visualock.app-mergeDebugResources-49:/layout/activity_forgot_password.xml",
+        "source": "/Users/steve/.gradle/daemon/8.2/com.example.visualock.app-main-52:/layout/activity_forgot_password.xml"
     },
     {
-        "merged": "C:\\Users\\MinhLe\\.gradle\\daemon\\8.2\\com.example.visualock.app-mergeDebugResources-49:\\layout\\activity_forgot_password.xml",
-        "source": "C:\\Users\\MinhLe\\.gradle\\daemon\\8.2\\com.example.visualock.app-main-52:\\layout\\activity_forgot_password.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.2/com.example.visualock.app-mergeDebugResources-49:/layout/activity_login.xml",
+        "source": "/Users/steve/.gradle/daemon/8.2/com.example.visualock.app-main-52:/layout/activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\MinhLe\\.gradle\\daemon\\8.2\\com.example.visualock.app-mergeDebugResources-49:\\layout\\fragment_dashboard.xml",
-        "source": "C:\\Users\\MinhLe\\.gradle\\daemon\\8.2\\com.example.visualock.app-main-52:\\layout\\fragment_dashboard.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.2/com.example.visualock.app-mergeDebugResources-49:/layout/fragment_home.xml",
+        "source": "/Users/steve/.gradle/daemon/8.2/com.example.visualock.app-main-52:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/steve/.gradle/daemon/8.2/com.example.visualock.app-mergeDebugResources-49:/layout/activity_register.xml",
+        "source": "/Users/steve/.gradle/daemon/8.2/com.example.visualock.app-main-52:/layout/activity_register.xml"
+    },
+    {
+        "merged": "/Users/steve/.gradle/daemon/8.2/com.example.visualock.app-mergeDebugResources-49:/layout/fragment_notifications.xml",
+        "source": "/Users/steve/.gradle/daemon/8.2/com.example.visualock.app-main-52:/layout/fragment_notifications.xml"
+    },
+    {
+        "merged": "/Users/steve/.gradle/daemon/8.2/com.example.visualock.app-mergeDebugResources-49:/layout/activity_main.xml",
+        "source": "/Users/steve/.gradle/daemon/8.2/com.example.visualock.app-main-52:/layout/activity_main.xml"
     },
     {
         "merged": "com.example.visualock.app-mergeDebugResources-49:/layout/activity_forgot_password.xml",
         "source": "com.example.visualock.app-main-52:/layout/activity_forgot_password.xml"
     },
     {
-        "merged": "C:\\Users\\MinhLe\\.gradle\\daemon\\8.2\\com.example.visualock.app-mergeDebugResources-49:\\layout\\fragment_home.xml",
-        "source": "C:\\Users\\MinhLe\\.gradle\\daemon\\8.2\\com.example.visualock.app-main-52:\\layout\\fragment_home.xml"
-    },
-    {
-        "merged": "C:\\Users\\MinhLe\\.gradle\\daemon\\8.2\\com.example.visualock.app-mergeDebugResources-49:\\layout\\fragment_notifications.xml",
-        "source": "C:\\Users\\MinhLe\\.gradle\\daemon\\8.2\\com.example.visualock.app-main-52:\\layout\\fragment_notifications.xml"
-    },
-    {
-        "merged": "C:\\Users\\MinhLe\\.gradle\\daemon\\8.2\\com.example.visualock.app-mergeDebugResources-49:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\MinhLe\\.gradle\\daemon\\8.2\\com.example.visualock.app-main-52:\\layout\\activity_main.xml"
-    },
-    {
-        "merged": "C:\\Users\\MinhLe\\.gradle\\daemon\\8.2\\com.example.visualock.app-mergeDebugResources-49:\\layout\\activity_login.xml",
-        "source": "C:\\Users\\MinhLe\\.gradle\\daemon\\8.2\\com.example.visualock.app-main-52:\\layout\\activity_login.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.2/com.example.visualock.app-mergeDebugResources-49:/layout/fragment_dashboard.xml",
+        "source": "/Users/steve/.gradle/daemon/8.2/com.example.visualock.app-main-52:/layout/fragment_dashboard.xml"
     }
 ]

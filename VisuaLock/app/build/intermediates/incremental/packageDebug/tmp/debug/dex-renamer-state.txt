@@ -1,16 +1,16 @@
-#Sun Mar 03 17:03:46 EST 2024
-base.0=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
-base.3=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
-base.4=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
-base.5=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
-base.6=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
-base.7=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex
+#Mon Mar 04 13:41:26 EST 2024
+base.0=/Users/steve/Downloads/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/steve/Downloads/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/Users/steve/Downloads/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeProjectDexDebug/1/classes.dex
+base.3=/Users/steve/Downloads/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex
+base.4=/Users/steve/Downloads/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeProjectDexDebug/8/classes.dex
+base.5=/Users/steve/Downloads/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
+base.6=/Users/steve/Downloads/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
+base.7=/Users/steve/Downloads/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeExtDexDebug/classes3.dex
 path.0=classes.dex
 path.1=0/classes.dex
-path.2=11/classes.dex
-path.3=1/classes.dex
+path.2=1/classes.dex
+path.3=11/classes.dex
 path.4=8/classes.dex
 path.5=9/classes.dex
 path.6=classes2.dex

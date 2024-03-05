@@ -26,6 +26,9 @@ public final class ActivityForgotPasswordBinding implements ViewBinding {
   public final CardView ForgotPasswordCardView;
 
   @NonNull
+  public final Button backButton;
+
+  @NonNull
   public final EditText resetEmail;
 
   @NonNull
@@ -35,10 +38,11 @@ public final class ActivityForgotPasswordBinding implements ViewBinding {
   public final TextView text;
 
   private ActivityForgotPasswordBinding(@NonNull ConstraintLayout rootView,
-      @NonNull CardView ForgotPasswordCardView, @NonNull EditText resetEmail,
-      @NonNull Button sendResetButton, @NonNull TextView text) {
+      @NonNull CardView ForgotPasswordCardView, @NonNull Button backButton,
+      @NonNull EditText resetEmail, @NonNull Button sendResetButton, @NonNull TextView text) {
     this.rootView = rootView;
     this.ForgotPasswordCardView = ForgotPasswordCardView;
+    this.backButton = backButton;
     this.resetEmail = resetEmail;
     this.sendResetButton = sendResetButton;
     this.text = text;
@@ -77,6 +81,12 @@ public final class ActivityForgotPasswordBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.backButton;
+      Button backButton = ViewBindings.findChildViewById(rootView, id);
+      if (backButton == null) {
+        break missingId;
+      }
+
       id = R.id.reset_email;
       EditText resetEmail = ViewBindings.findChildViewById(rootView, id);
       if (resetEmail == null) {
@@ -96,7 +106,7 @@ public final class ActivityForgotPasswordBinding implements ViewBinding {
       }
 
       return new ActivityForgotPasswordBinding((ConstraintLayout) rootView, ForgotPasswordCardView,
-          resetEmail, sendResetButton, text);
+          backButton, resetEmail, sendResetButton, text);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
