@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "com.example.visualock.app-mergeDebugResources-49:/layout/fragment_menu.xml",
+        "source": "com.example.visualock.app-main-52:/layout/fragment_menu.xml"
+    },
+    {
+        "merged": "com.example.visualock.app-mergeDebugResources-49:/layout/activity_register.xml",
+        "source": "com.example.visualock.app-main-52:/layout/activity_register.xml"
+    },
+    {
+        "merged": "com.example.visualock.app-mergeDebugResources-49:/layout/activity_forgot_password.xml",
+        "source": "com.example.visualock.app-main-52:/layout/activity_forgot_password.xml"
+    },
+    {
+        "merged": "com.example.visualock.app-mergeDebugResources-49:/layout/fragment_dashboard.xml",
+        "source": "com.example.visualock.app-main-52:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.example.visualock.app-mergeDebugResources-49:/layout/activity_login.xml",
+        "source": "com.example.visualock.app-main-52:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.example.visualock.app-mergeDebugResources-49:/layout/menu_item.xml",
+        "source": "com.example.visualock.app-main-52:/layout/menu_item.xml"
+    },
+    {
+        "merged": "com.example.visualock.app-mergeDebugResources-49:/layout/activity_main.xml",
+        "source": "com.example.visualock.app-main-52:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.visualock.app-mergeDebugResources-49:/layout/fragment_notifications.xml",
+        "source": "com.example.visualock.app-main-52:/layout/fragment_notifications.xml"
+    },
+    {
+        "merged": "com.example.visualock.app-mergeDebugResources-49:/layout/fragment_home.xml",
+        "source": "com.example.visualock.app-main-52:/layout/fragment_home.xml"
+    }
+]
