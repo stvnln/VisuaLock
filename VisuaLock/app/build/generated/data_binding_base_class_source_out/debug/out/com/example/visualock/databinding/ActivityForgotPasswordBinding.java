@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,7 +27,7 @@ public final class ActivityForgotPasswordBinding implements ViewBinding {
   public final CardView ForgotPasswordCardView;
 
   @NonNull
-  public final Button backButton;
+  public final ImageView backButton;
 
   @NonNull
   public final EditText resetEmail;
@@ -38,7 +39,7 @@ public final class ActivityForgotPasswordBinding implements ViewBinding {
   public final TextView text;
 
   private ActivityForgotPasswordBinding(@NonNull ConstraintLayout rootView,
-      @NonNull CardView ForgotPasswordCardView, @NonNull Button backButton,
+      @NonNull CardView ForgotPasswordCardView, @NonNull ImageView backButton,
       @NonNull EditText resetEmail, @NonNull Button sendResetButton, @NonNull TextView text) {
     this.rootView = rootView;
     this.ForgotPasswordCardView = ForgotPasswordCardView;
@@ -82,7 +83,7 @@ public final class ActivityForgotPasswordBinding implements ViewBinding {
       }
 
       id = R.id.backButton;
-      Button backButton = ViewBindings.findChildViewById(rootView, id);
+      ImageView backButton = ViewBindings.findChildViewById(rootView, id);
       if (backButton == null) {
         break missingId;
       }

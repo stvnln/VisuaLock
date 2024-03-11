@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        //Manual Sign Up
+        //Firebase Authentication initialization
         auth = FirebaseAuth.getInstance();
         database = FirebaseFirestore.getInstance();
         registerEmail = findViewById(R.id.register_email);
@@ -47,61 +47,75 @@ public class RegisterActivity extends AppCompatActivity {
                 String user = registerEmail.getText().toString().trim();
                 String pass = registerPassword.getText().toString().trim();
 
+                if (!isValidEmail(user)) {
+                    registerEmail.setError("Invalid email format");
+                    return;
+                }
+
                 User user1 = new User(name, user, pass);
 
-
-                if (user.isEmpty()) {
-                    registerEmail.setError("Email cannot be empty");
-                }
                 if (pass.isEmpty()) {
                     registerPassword.setError("Password cannot be empty");
-                } else {
-                    auth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                String uid = task.getResult().getUser().getUid();
-                                database
-                                        .collection("users")
-                                        .document(uid)
-                                        .set(user1).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
+                    return;
+                }
 
-                                                    Toast.makeText(RegisterActivity.this, "register successful", Toast.LENGTH_SHORT).show();
-                                                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                                                    finish();
-                                                } else {
-                                                    Toast.makeText(RegisterActivity.this, "Failed to set display name", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        });
-                                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                        .setDisplayName(name)
-                                        .build();
-
-                                firebaseUser.updateProfile(profileUpdates)
+                // Create user with email and password
+                auth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                            if (currentUser != null) {
+                                currentUser.sendEmailVerification()
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-
-                                                    Toast.makeText(RegisterActivity.this, "Register successful", Toast.LENGTH_SHORT).show();
-                                                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                                    Toast.makeText(RegisterActivity.this, "Verification email sent. Please verify your email address.", Toast.LENGTH_SHORT).show();
                                                 } else {
-                                                    Toast.makeText(RegisterActivity.this, "Failed to set display name", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(RegisterActivity.this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         });
-                            } else {
-                                Toast.makeText(RegisterActivity.this, "Register Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
-                        }
-                    });
 
-                }
+                            String uid = task.getResult().getUser().getUid();
+                            database
+                                    .collection("users")
+                                    .document(uid)
+                                    .set(user1)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                                finish();
+                                            } else {
+                                                Toast.makeText(RegisterActivity.this, "Failed to set display name", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+
+                            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(name)
+                                    .build();
+
+                            firebaseUser.updateProfile(profileUpdates)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (!task.isSuccessful()) {
+                                                Toast.makeText(RegisterActivity.this, "Failed to set display name", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        } else {
+                            Toast.makeText(RegisterActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
 
@@ -111,5 +125,11 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             }
         });
+    }
+
+    // Method to validate email format
+    public boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        return email.matches(emailRegex);
     }
 }

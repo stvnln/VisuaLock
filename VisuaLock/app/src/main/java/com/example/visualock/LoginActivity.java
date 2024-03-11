@@ -33,6 +33,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Check if the user is already authenticated
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            // User is already signed in, redirect to MainActivity
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish(); // Finish LoginActivity so that the user cannot navigate back to it
+        }
+
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
@@ -59,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         intent.putExtra("email", email);
                                         startActivity(intent);
+                                        finish();
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
