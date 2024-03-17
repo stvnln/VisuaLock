@@ -46,12 +46,12 @@ public class LoginActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
 
         loginEmail = findViewById(R.id.login_email);
-        loginPassword = findViewById(R.id.login_password);
-        loginButton = findViewById(R.id.login_button);
+        //loginPassword = findViewById(R.id.login_password);
+        //loginButton = findViewById(R.id.login_button);
         registerRedirectText = findViewById(R.id.registerRedirectText);
         forgot_passRedirectText = findViewById(R.id.forgot_passRedirectText);
         password_redirect = findViewById(R.id.password_button);
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        /*loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email = loginEmail.getText().toString();
@@ -86,6 +86,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+         */
 
         registerRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
