@@ -38,11 +38,14 @@ public final class ActivityLoginBinding implements ViewBinding {
   public final EditText loginPassword;
 
   @NonNull
+  public final Button passwordButton;
+
+  @NonNull
   public final TextView registerRedirectText;
 
   private ActivityLoginBinding(@NonNull ConstraintLayout rootView, @NonNull CardView LoginCardView,
       @NonNull TextView forgotPassRedirectText, @NonNull Button loginButton,
-      @NonNull EditText loginEmail, @NonNull EditText loginPassword,
+      @NonNull EditText loginEmail, @NonNull EditText loginPassword, @NonNull Button passwordButton,
       @NonNull TextView registerRedirectText) {
     this.rootView = rootView;
     this.LoginCardView = LoginCardView;
@@ -50,6 +53,7 @@ public final class ActivityLoginBinding implements ViewBinding {
     this.loginButton = loginButton;
     this.loginEmail = loginEmail;
     this.loginPassword = loginPassword;
+    this.passwordButton = passwordButton;
     this.registerRedirectText = registerRedirectText;
   }
 
@@ -110,6 +114,12 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.password_button;
+      Button passwordButton = ViewBindings.findChildViewById(rootView, id);
+      if (passwordButton == null) {
+        break missingId;
+      }
+
       id = R.id.registerRedirectText;
       TextView registerRedirectText = ViewBindings.findChildViewById(rootView, id);
       if (registerRedirectText == null) {
@@ -117,7 +127,8 @@ public final class ActivityLoginBinding implements ViewBinding {
       }
 
       return new ActivityLoginBinding((ConstraintLayout) rootView, LoginCardView,
-          forgotPassRedirectText, loginButton, loginEmail, loginPassword, registerRedirectText);
+          forgotPassRedirectText, loginButton, loginEmail, loginPassword, passwordButton,
+          registerRedirectText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
