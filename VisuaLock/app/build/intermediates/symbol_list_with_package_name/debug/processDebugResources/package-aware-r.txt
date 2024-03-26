@@ -3130,6 +3130,7 @@ drawable googleg_standard_color_18
 drawable greatwallofchina
 drawable green
 drawable grey
+drawable grid_item_selector
 drawable hawamahal
 drawable helicopter
 drawable ic_arrow_back_black_24
@@ -3397,6 +3398,12 @@ id cache_measures
 id callMeasure
 id cancel_button
 id carryVelocity
+id cat_animals
+id cat_color
+id cat_dailyObjects
+id cat_places
+id cat_tree
+id cat_vehicles
 id center
 id centerCrop
 id centerInside
@@ -3542,10 +3549,8 @@ id locale
 id loginRedirectText
 id login_button
 id login_email
-id login_password
 id ltr
 id m3_side_sheet
-id main_grid
 id marquee
 id masked
 id match_constraint

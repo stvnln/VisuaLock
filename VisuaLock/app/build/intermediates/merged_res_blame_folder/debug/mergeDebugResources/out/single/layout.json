@@ -4,6 +4,10 @@
         "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-52:/layout/fragment_dashboard.xml"
     },
     {
+        "merged": "com.example.visualock.app-mergeDebugResources-49:/layout/activity_password_input.xml",
+        "source": "com.example.visualock.app-main-52:/layout/activity_password_input.xml"
+    },
+    {
         "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-mergeDebugResources-49:/layout/activity_login.xml",
         "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-52:/layout/activity_login.xml"
     },
@@ -38,9 +42,5 @@
     {
         "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-mergeDebugResources-49:/layout/activity_register.xml",
         "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-52:/layout/activity_register.xml"
-    },
-    {
-        "merged": "com.example.visualock.app-mergeDebugResources-49:/layout/activity_login.xml",
-        "source": "com.example.visualock.app-main-52:/layout/activity_login.xml"
     }
 ]

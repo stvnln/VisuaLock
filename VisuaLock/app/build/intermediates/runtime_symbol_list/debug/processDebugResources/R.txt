@@ -3129,6 +3129,7 @@ int drawable googleg_standard_color_18 0x7f0700a0
 int drawable greatwallofchina 0x7f07012a
 int drawable green 0x7f07012b
 int drawable grey 0x7f07012c
+int drawable grid_item_selector 0x7f070164
 int drawable hawamahal 0x7f07012d
 int drawable helicopter 0x7f07012e
 int drawable ic_arrow_back_black_24 0x7f0700a1
@@ -3396,6 +3397,12 @@ int id cache_measures 0x7f080070
 int id callMeasure 0x7f080071
 int id cancel_button 0x7f080072
 int id carryVelocity 0x7f080073
+int id cat_animals 0x7f080221
+int id cat_color 0x7f080222
+int id cat_dailyObjects 0x7f080223
+int id cat_places 0x7f080224
+int id cat_tree 0x7f080225
+int id cat_vehicles 0x7f080226
 int id center 0x7f080074
 int id centerCrop 0x7f080075
 int id centerInside 0x7f080076
@@ -3541,10 +3548,8 @@ int id locale 0x7f080101
 int id loginRedirectText 0x7f080102
 int id login_button 0x7f080103
 int id login_email 0x7f080104
-int id login_password 0x7f080105
 int id ltr 0x7f080106
 int id m3_side_sheet 0x7f080107
-int id main_grid 0x7f080108
 int id marquee 0x7f080109
 int id masked 0x7f08010a
 int id match_constraint 0x7f08010b

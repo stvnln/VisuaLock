@@ -32,9 +32,6 @@ public final class ActivityLoginBinding implements ViewBinding {
   public final EditText loginEmail;
 
   @NonNull
-  public final EditText loginPassword;
-
-  @NonNull
   public final Button passwordButton;
 
   @NonNull
@@ -42,13 +39,11 @@ public final class ActivityLoginBinding implements ViewBinding {
 
   private ActivityLoginBinding(@NonNull ConstraintLayout rootView, @NonNull CardView LoginCardView,
       @NonNull TextView forgotPassRedirectText, @NonNull EditText loginEmail,
-      @NonNull EditText loginPassword, @NonNull Button passwordButton,
-      @NonNull TextView registerRedirectText) {
+      @NonNull Button passwordButton, @NonNull TextView registerRedirectText) {
     this.rootView = rootView;
     this.LoginCardView = LoginCardView;
     this.forgotPassRedirectText = forgotPassRedirectText;
     this.loginEmail = loginEmail;
-    this.loginPassword = loginPassword;
     this.passwordButton = passwordButton;
     this.registerRedirectText = registerRedirectText;
   }
@@ -98,12 +93,6 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.login_password;
-      EditText loginPassword = ViewBindings.findChildViewById(rootView, id);
-      if (loginPassword == null) {
-        break missingId;
-      }
-
       id = R.id.password_button;
       Button passwordButton = ViewBindings.findChildViewById(rootView, id);
       if (passwordButton == null) {
@@ -117,7 +106,7 @@ public final class ActivityLoginBinding implements ViewBinding {
       }
 
       return new ActivityLoginBinding((ConstraintLayout) rootView, LoginCardView,
-          forgotPassRedirectText, loginEmail, loginPassword, passwordButton, registerRedirectText);
+          forgotPassRedirectText, loginEmail, passwordButton, registerRedirectText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

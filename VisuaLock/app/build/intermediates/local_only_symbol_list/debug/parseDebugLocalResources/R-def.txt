@@ -61,6 +61,7 @@ drawable goldengate
 drawable greatwallofchina
 drawable green
 drawable grey
+drawable grid_item_selector
 drawable hawamahal
 drawable helicopter
 drawable ic_dashboard_black_24dp
@@ -131,6 +132,12 @@ id LoginCardView
 id PasswordCardView
 id RegisterCardView
 id backButton
+id cat_animals
+id cat_color
+id cat_dailyObjects
+id cat_places
+id cat_tree
+id cat_vehicles
 id container
 id forgot_passRedirectText
 id icon_menu
@@ -138,8 +145,6 @@ id list_menu
 id loginRedirectText
 id login_button
 id login_email
-id login_password
-id main_grid
 id mobile_navigation
 id nav_host_fragment_activity_main
 id nav_view

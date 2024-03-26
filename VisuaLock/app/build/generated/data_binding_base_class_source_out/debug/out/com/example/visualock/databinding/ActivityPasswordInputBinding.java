@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
@@ -29,19 +29,41 @@ public final class ActivityPasswordInputBinding implements ViewBinding {
   public final ImageView backButton;
 
   @NonNull
-  public final Button loginButton;
+  public final ListView catAnimals;
 
   @NonNull
-  public final GridView mainGrid;
+  public final ListView catColor;
+
+  @NonNull
+  public final ListView catDailyObjects;
+
+  @NonNull
+  public final ListView catPlaces;
+
+  @NonNull
+  public final ListView catTree;
+
+  @NonNull
+  public final ListView catVehicles;
+
+  @NonNull
+  public final Button loginButton;
 
   private ActivityPasswordInputBinding(@NonNull ConstraintLayout rootView,
       @NonNull CardView PasswordCardView, @NonNull ImageView backButton,
-      @NonNull Button loginButton, @NonNull GridView mainGrid) {
+      @NonNull ListView catAnimals, @NonNull ListView catColor, @NonNull ListView catDailyObjects,
+      @NonNull ListView catPlaces, @NonNull ListView catTree, @NonNull ListView catVehicles,
+      @NonNull Button loginButton) {
     this.rootView = rootView;
     this.PasswordCardView = PasswordCardView;
     this.backButton = backButton;
+    this.catAnimals = catAnimals;
+    this.catColor = catColor;
+    this.catDailyObjects = catDailyObjects;
+    this.catPlaces = catPlaces;
+    this.catTree = catTree;
+    this.catVehicles = catVehicles;
     this.loginButton = loginButton;
-    this.mainGrid = mainGrid;
   }
 
   @Override
@@ -83,20 +105,51 @@ public final class ActivityPasswordInputBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.cat_animals;
+      ListView catAnimals = ViewBindings.findChildViewById(rootView, id);
+      if (catAnimals == null) {
+        break missingId;
+      }
+
+      id = R.id.cat_color;
+      ListView catColor = ViewBindings.findChildViewById(rootView, id);
+      if (catColor == null) {
+        break missingId;
+      }
+
+      id = R.id.cat_dailyObjects;
+      ListView catDailyObjects = ViewBindings.findChildViewById(rootView, id);
+      if (catDailyObjects == null) {
+        break missingId;
+      }
+
+      id = R.id.cat_places;
+      ListView catPlaces = ViewBindings.findChildViewById(rootView, id);
+      if (catPlaces == null) {
+        break missingId;
+      }
+
+      id = R.id.cat_tree;
+      ListView catTree = ViewBindings.findChildViewById(rootView, id);
+      if (catTree == null) {
+        break missingId;
+      }
+
+      id = R.id.cat_vehicles;
+      ListView catVehicles = ViewBindings.findChildViewById(rootView, id);
+      if (catVehicles == null) {
+        break missingId;
+      }
+
       id = R.id.login_button;
       Button loginButton = ViewBindings.findChildViewById(rootView, id);
       if (loginButton == null) {
         break missingId;
       }
 
-      id = R.id.main_grid;
-      GridView mainGrid = ViewBindings.findChildViewById(rootView, id);
-      if (mainGrid == null) {
-        break missingId;
-      }
-
       return new ActivityPasswordInputBinding((ConstraintLayout) rootView, PasswordCardView,
-          backButton, loginButton, mainGrid);
+          backButton, catAnimals, catColor, catDailyObjects, catPlaces, catTree, catVehicles,
+          loginButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

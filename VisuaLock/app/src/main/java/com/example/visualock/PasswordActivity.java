@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.AdapterView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +32,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 
  public class PasswordActivity extends AppCompatActivity {
-     public class ImageAdapter extends BaseAdapter {
+     public static class ImageAdapter extends BaseAdapter {
          private Context mContext;
          private int[] mImageIds;
 
@@ -46,7 +48,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
          @Override
          public Object getItem(int position) {
-             return null;
+             return mImageIds[position];
          }
 
          @Override
@@ -71,50 +73,121 @@ import com.google.firebase.firestore.FirebaseFirestore;
              imageView.setImageResource(mImageIds[position]);
              return imageView;
          }
+
      }
 
-     int[] imageArray = {
-             R.drawable.grey, R.drawable.phone, R.drawable.birch, R.drawable.bike, R.drawable.leaningtowerofpisa,
-             R.drawable.carrot, R.drawable.colosseum, R.drawable.mouse, R.drawable.balloon, R.drawable.boat,
-             R.drawable.bear, R.drawable.rabbit, R.drawable.firetruck, R.drawable.greatwallofchina, R.drawable.cedar,
-             R.drawable.turtle, R.drawable.bird, R.drawable.truck, R.drawable.statueofliberty, R.drawable.pink,
-             R.drawable.giraffe, R.drawable.willow, R.drawable.umbrella, R.drawable.glasses, R.drawable.table,
-             R.drawable.snake, R.drawable.maple, R.drawable.elm, R.drawable.beech, R.drawable.train, R.drawable.sailboat,
-             R.drawable.sportscar, R.drawable.monkey, R.drawable.white, R.drawable.shoe, R.drawable.plant,
-             R.drawable.pyramidsofgiza, R.drawable.christtheredeemer, R.drawable.computer, R.drawable.mug,
-             R.drawable.neuschwansteincastle, R.drawable.pickuptruck, R.drawable.green, R.drawable.orange,
-             R.drawable.cycle2, R.drawable.stonehenge, R.drawable.kangroo, R.drawable.frog, R.drawable.yellow,
-             R.drawable.keyboard, R.drawable.cycle, R.drawable.sun, R.drawable.acropolisofathens, R.drawable.blue,
-             R.drawable.cat, R.drawable.leaf, R.drawable.bottle, R.drawable.koifish, R.drawable.fish, R.drawable.kremlin,
-             R.drawable.eiffeltower, R.drawable.ash, R.drawable.book, R.drawable.zebra, R.drawable.bigben,
-             R.drawable.cloud, R.drawable.ambullance, R.drawable.fir, R.drawable.metro, R.drawable.tiger,
-             R.drawable.flower, R.drawable.black, R.drawable.goldengate, R.drawable.lion, R.drawable.red,
-             R.drawable.petronastowers, R.drawable.tajmahal, R.drawable.operahouse, R.drawable.dog,
-             R.drawable.ape, R.drawable.key, R.drawable.squirrel, R.drawable.bus, R.drawable.polar_bear,
-             R.drawable.machupicchu, R.drawable.jetski, R.drawable.oak, R.drawable.purple, R.drawable.hawamahal,
-             R.drawable.burjkhalifa, R.drawable.scooter, R.drawable.cargoship, R.drawable.car, R.drawable.pine,
-             R.drawable.apple, R.drawable.mountrushmore, R.drawable.helicopter, R.drawable.sportsbike,
-             R.drawable.plane
+     int[] colorImages = {
+             R.drawable.grey, R.drawable.pink, R.drawable.green, R.drawable.orange, R.drawable.yellow,
+             R.drawable.blue, R.drawable.black, R.drawable.red, R.drawable.purple
      };
-    protected void onCreate(Bundle savedInstanceState) {
+
+     int[] treeImages = {
+             R.drawable.birch, R.drawable.cedar, R.drawable.maple, R.drawable.elm, R.drawable.willow, R.drawable.pine,
+             R.drawable.oak
+     };
+
+     int[] dailyObjectsImages = {
+             R.drawable.phone, R.drawable.carrot, R.drawable.mouse, R.drawable.balloon, R.drawable.boat,
+             R.drawable.glasses, R.drawable.table, R.drawable.keyboard, R.drawable.sun, R.drawable.book,
+             R.drawable.cloud, R.drawable.bottle, R.drawable.leaf, R.drawable.apple, R.drawable.plant,
+             R.drawable.key, R.drawable.mug, R.drawable.shoe
+     };
+
+     int[] animalImages = {
+             R.drawable.bear, R.drawable.rabbit, R.drawable.turtle, R.drawable.bird, R.drawable.giraffe, R.drawable.snake,
+             R.drawable.monkey, R.drawable.zebra, R.drawable.cat, R.drawable.koifish, R.drawable.fish, R.drawable.lion,
+             R.drawable.dog, R.drawable.squirrel, R.drawable.polar_bear, R.drawable.kangroo, R.drawable.frog, R.drawable.tiger
+     };
+
+     int[] placesImages = {
+             R.drawable.leaningtowerofpisa, R.drawable.colosseum, R.drawable.greatwallofchina, R.drawable.pyramidsofgiza,
+             R.drawable.christtheredeemer, R.drawable.neuschwansteincastle, R.drawable.stonehenge, R.drawable.acropolisofathens,
+             R.drawable.petronastowers, R.drawable.tajmahal, R.drawable.operahouse, R.drawable.machupicchu, R.drawable.eiffeltower,
+             R.drawable.goldengate, R.drawable.burjkhalifa
+     };
+
+     int[] vehicleImages = {
+             R.drawable.bike, R.drawable.firetruck, R.drawable.truck, R.drawable.sailboat, R.drawable.sportscar,
+             R.drawable.pickuptruck, R.drawable.cycle, R.drawable.cycle2, R.drawable.jetski, R.drawable.bus,
+             R.drawable.cargoship, R.drawable.helicopter, R.drawable.plane, R.drawable.mountrushmore, R.drawable.scooter,
+             R.drawable.ambullance, R.drawable.metro
+     };
+
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_password_input);
+
+         ListView Tree = findViewById(R.id.cat_tree);
+         Tree.setAdapter(new ImageAdapter(this, treeImages));
+         ListView Color = findViewById(R.id.cat_color);
+         Color.setAdapter(new ImageAdapter(this, colorImages));
+         ListView dailyObjects = findViewById(R.id.cat_dailyObjects);
+         dailyObjects.setAdapter(new ImageAdapter(this,dailyObjectsImages));
+         ListView Animals = findViewById(R.id.cat_animals);
+         Animals.setAdapter(new ImageAdapter(this, animalImages));
+         ListView Places = findViewById(R.id.cat_places);
+         Places.setAdapter(new ImageAdapter(this, placesImages));
+         ListView Vehicle = findViewById(R.id.cat_vehicles);
+         Vehicle.setAdapter(new ImageAdapter(this,vehicleImages));
+
+         Tree.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                 Toast.makeText(PasswordActivity.this, "Tree image clicked at position: " + position, Toast.LENGTH_SHORT).show();
 
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_password_input);
+             }
+         });
+         Color.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                 Toast.makeText(PasswordActivity.this, "Color image clicked at position: " + position, Toast.LENGTH_SHORT).show();
 
-        GridView gridView = findViewById(R.id.main_grid);
-        gridView.setAdapter(new ImageAdapter(this, imageArray));
+
+             }
+         });
+         dailyObjects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                 Toast.makeText(PasswordActivity.this, "Daiily Object image clicked at position: " + position, Toast.LENGTH_SHORT).show();
+
+
+             }
+         });
+         Animals.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                 Toast.makeText(PasswordActivity.this, "Animals image clicked at position: " + position, Toast.LENGTH_SHORT).show();
+
+
+             }
+         });
+         Places.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                 Toast.makeText(PasswordActivity.this, "Places image clicked at position: " + position, Toast.LENGTH_SHORT).show();
+
+
+             }
+         });
+         Vehicle.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                 Toast.makeText(PasswordActivity.this, "Vehicle image clicked at position: " + position, Toast.LENGTH_SHORT).show();
+
+
+             }
+         });
 
 
 
-        ImageView backButton = findViewById(R.id.backButton);
+         ImageView backButton = findViewById(R.id.backButton);
+         backButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startActivity(new Intent(PasswordActivity.this, LoginActivity.class));
+             }
+         });
+     }
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(PasswordActivity.this, LoginActivity.class));
-            }
-        });
-
-    }
 }
