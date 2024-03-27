@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private Button loginButton;
 
+    private Button password_redirect;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +46,12 @@ public class LoginActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
 
         loginEmail = findViewById(R.id.login_email);
-        loginPassword = findViewById(R.id.login_password);
-        loginButton = findViewById(R.id.login_button);
+        //loginPassword = findViewById(R.id.login_password);
+        //loginButton = findViewById(R.id.login_button);
         registerRedirectText = findViewById(R.id.registerRedirectText);
         forgot_passRedirectText = findViewById(R.id.forgot_passRedirectText);
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        password_redirect = findViewById(R.id.password_button);
+        /*loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email = loginEmail.getText().toString();
@@ -86,6 +87,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+         */
+
         registerRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,7 +102,14 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
             }
         });
+        password_redirect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, PasswordActivity.class));
+            }
+        });
     }
+
 
     private void updatePasswordInFirestore(final String email, final String password) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
