@@ -16,6 +16,10 @@
         "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-52:/drawable/stonehenge.webp"
     },
     {
+        "merged": "com.example.visualock.app-debug-50:/layout_change_email.xml.flat",
+        "source": "com.example.visualock.app-main-52:/layout/change_email.xml"
+    },
+    {
         "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-50:/drawable_mug.webp.flat",
         "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-52:/drawable/mug.webp"
     },
@@ -24,12 +28,12 @@
         "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-52:/drawable/plant.webp"
     },
     {
-        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-50:/drawable_colosseum.webp.flat",
-        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-52:/drawable/colosseum.webp"
-    },
-    {
         "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-50:/layout_fragment_home.xml.flat",
         "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-52:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-50:/drawable_colosseum.webp.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-52:/drawable/colosseum.webp"
     },
     {
         "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-50:/drawable_maple.webp.flat",
@@ -80,12 +84,12 @@
         "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-52:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-50:/drawable_phone.webp.flat",
-        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-52:/drawable/phone.webp"
-    },
-    {
         "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-50:/drawable_book.webp.flat",
         "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-52:/drawable/book.webp"
+    },
+    {
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-50:/drawable_phone.webp.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-52:/drawable/phone.webp"
     },
     {
         "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-50:/drawable_pickuptruck.webp.flat",
@@ -394,10 +398,6 @@
     {
         "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-50:/drawable_truck.webp.flat",
         "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-52:/drawable/truck.webp"
-    },
-    {
-        "merged": "com.example.visualock.app-debug-50:/layout_activity_password_input.xml.flat",
-        "source": "com.example.visualock.app-main-52:/layout/activity_password_input.xml"
     },
     {
         "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-50:/drawable_ic_notifications_black_24dp.xml.flat",

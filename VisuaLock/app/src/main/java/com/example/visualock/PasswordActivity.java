@@ -149,7 +149,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
          dailyObjects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
              @Override
              public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                 Toast.makeText(PasswordActivity.this, "Daiily Object image clicked at position: " + position, Toast.LENGTH_SHORT).show();
+                 Toast.makeText(PasswordActivity.this, "Daily Object image clicked at position: " + position, Toast.LENGTH_SHORT).show();
 
 
              }

@@ -3954,6 +3954,7 @@ layout activity_password_input
 layout activity_register
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
+layout change_email
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

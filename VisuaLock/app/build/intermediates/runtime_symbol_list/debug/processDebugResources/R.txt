@@ -3953,6 +3953,7 @@ int layout activity_password_input 0x7f0b001f
 int layout activity_register 0x7f0b0020
 int layout browser_actions_context_menu_page 0x7f0b0021
 int layout browser_actions_context_menu_row 0x7f0b0022
+int layout change_email 0x7f0b0075
 int layout custom_dialog 0x7f0b0023
 int layout design_bottom_navigation_item 0x7f0b0024
 int layout design_bottom_sheet_dialog 0x7f0b0025

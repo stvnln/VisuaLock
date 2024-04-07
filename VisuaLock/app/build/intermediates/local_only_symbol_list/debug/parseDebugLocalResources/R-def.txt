@@ -170,6 +170,7 @@ layout activity_login
 layout activity_main
 layout activity_password_input
 layout activity_register
+layout change_email
 layout fragment_dashboard
 layout fragment_home
 layout fragment_menu
