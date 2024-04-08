@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.visualock.app-mergeDebugResources-48:/values-sr/values-sr.xml",
+            "outputFile": "com.example.visualock.app-mergeDebugResources-49:/values-sr/values-sr.xml",
             "map": [
                 {
                     "source": "/Users/steve/.gradle/caches/transforms-3/efa299fb8ebcb83465dd25fe49e587e4/transformed/core-1.9.0/res/values-sr/values-sr.xml",

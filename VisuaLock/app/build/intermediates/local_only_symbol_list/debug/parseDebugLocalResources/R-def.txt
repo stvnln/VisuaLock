@@ -140,7 +140,9 @@ id cat_tree
 id cat_vehicles
 id container
 id forgot_passRedirectText
+id horizontalScrollView
 id icon_menu
+id linearLayout
 id list_menu
 id loginRedirectText
 id login_button
@@ -165,6 +167,7 @@ id text_dashboard
 id text_home
 id text_menu
 id text_notifications
+layout activity_add_image
 layout activity_forgot_password
 layout activity_login
 layout activity_main

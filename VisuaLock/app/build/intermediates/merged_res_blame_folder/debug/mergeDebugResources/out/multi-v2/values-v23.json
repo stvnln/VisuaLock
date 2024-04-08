@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.visualock.app-mergeDebugResources-48:/values-v23/values-v23.xml",
+            "outputFile": "com.example.visualock.app-mergeDebugResources-49:/values-v23/values-v23.xml",
             "map": [
                 {
                     "source": "/Users/steve/.gradle/caches/transforms-3/7fc89ae22ae3d93ac067a7ba7c432492/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",

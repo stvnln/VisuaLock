@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.visualock.app-mergeDebugResources-48:/values-en-rIN/values-en-rIN.xml",
+            "outputFile": "com.example.visualock.app-mergeDebugResources-49:/values-en-rIN/values-en-rIN.xml",
             "map": [
                 {
                     "source": "/Users/steve/.gradle/caches/transforms-3/22541acbe54c81f053213b650b66fc50/transformed/navigation-ui-2.7.7/res/values-en-rIN/values-en-rIN.xml",

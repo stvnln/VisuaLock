@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.visualock.app-mergeDebugResources-48:/values-zh-rHK/values-zh-rHK.xml",
+            "outputFile": "com.example.visualock.app-mergeDebugResources-49:/values-zh-rHK/values-zh-rHK.xml",
             "map": [
                 {
                     "source": "/Users/steve/.gradle/caches/transforms-3/9867130b1568d861741d80050f9f118f/transformed/play-services-base-18.0.1/res/values-zh-rHK/values.xml",
