@@ -2,6 +2,7 @@ package com.example.visualock;
 import java.util.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.widget.GridView;
@@ -84,12 +85,17 @@ public class PasswordActivity extends AppCompatActivity {
      }
 
 
-    ArrayList<String> colorImages;
-    ArrayList<String> treeImages;
-    ArrayList<String> dailyObjectsImages;
-    ArrayList<String> animalImages;
-    ArrayList<String> placesImages;
-    ArrayList<String> vehicleImages;
+    private ArrayList<String> colorImages;
+    private ArrayList<String> treeImages;
+    private ArrayList<String> dailyObjectsImages;
+    private ArrayList<String> animalImages;
+    private ArrayList<String> placesImages;
+    private ArrayList<String> vehicleImages;
+
+    ArrayList<String> inputImages = new ArrayList<>();
+    ArrayList<String> input = new ArrayList<>();
+    private ArrayList<String> keyList;
+    private final HashMap<String, List<String>> passwordKey = new HashMap<String, List<String>>();
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +105,42 @@ public class PasswordActivity extends AppCompatActivity {
 
 
         firestore = FirebaseFirestore.getInstance();
+        DocumentReference key = firestore.collection("image_categories").document("key");
+        key.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot document) {
+                String documentID = document.getId();
+                Map<String, Object> data = document.getData();
+                if(data!=null){
+                    for(Map.Entry<String,Object> entry: data.entrySet()){
+                        String field = entry.getKey();
+                        ArrayList<String> value = (ArrayList<String>) entry.getValue();
+                        switch (field){
+                            case "animalImages":
+                                passwordKey.put("animalImages", value);
+                                break;
+                            case "colorImages":
+                                passwordKey.put("colorImages", value);
+                                break;
+                            case "dailyObjectsImages":
+                                passwordKey.put("dailyObjectsImages", value);
+                                break;
+                            case "placesImages":
+                                passwordKey.put("placesImages", value);
+                                break;
+                            case "treeImages":
+                                passwordKey.put("treeImages", value);
+                                break;
+                            case "vehicleImages":
+                                passwordKey.put("vehicleImages", value);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+        });
         DocumentReference image_categories =  firestore.collection("image_categories").document("qPQROdVyhejjFHqYySWo");
         image_categories.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -154,11 +196,16 @@ public class PasswordActivity extends AppCompatActivity {
                 ListView Vehicle = findViewById(R.id.cat_vehicles);
                 Vehicle.setAdapter(new ImageAdapter(PasswordActivity.this,vehicleImages));
 
+
+
+
+                RecyclerView recyclerView = findViewById(R.id.password_receiver);
                 Tree.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(PasswordActivity.this, "Tree image clicked at position: " + position, Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(PasswordActivity.this, "Tree image clicked at position: " + passwordKey.get("treeImages").get(position), Toast.LENGTH_SHORT).show();
+                        input.add(passwordKey.get("treeImages").get(position));
+                        inputImages.add(treeImages.get(position));
 
                     }
                 });
@@ -166,7 +213,8 @@ public class PasswordActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Toast.makeText(PasswordActivity.this, "Color image clicked at position: " + position, Toast.LENGTH_SHORT).show();
-
+                        input.add(passwordKey.get("colorImages").get(position));
+                        inputImages.add(colorImages.get(position));
 
                     }
                 });
@@ -174,7 +222,8 @@ public class PasswordActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Toast.makeText(PasswordActivity.this, "Daily Object image clicked at position: " + position, Toast.LENGTH_SHORT).show();
-
+                        input.add(passwordKey.get("dailyObjectsImages").get(position));
+                        inputImages.add(dailyObjectsImages.get(position));
 
                     }
                 });
@@ -182,7 +231,8 @@ public class PasswordActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Toast.makeText(PasswordActivity.this, "Animals image clicked at position: " + position, Toast.LENGTH_SHORT).show();
-
+                        input.add(passwordKey.get("animalImages").get(position));
+                        inputImages.add(animalImages.get(position));
 
                     }
                 });
@@ -190,7 +240,8 @@ public class PasswordActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Toast.makeText(PasswordActivity.this, "Places image clicked at position: " + position, Toast.LENGTH_SHORT).show();
-
+                        input.add(passwordKey.get("placesImages").get(position));
+                        inputImages.add(placesImages.get(position));
 
                     }
                 });
@@ -198,7 +249,8 @@ public class PasswordActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Toast.makeText(PasswordActivity.this, "Vehicle image clicked at position: " + position, Toast.LENGTH_SHORT).show();
-
+                        input.add(passwordKey.get("vehicleImages").get(position));
+                        inputImages.add(vehicleImages.get(position));
 
                     }
                 });
