@@ -139,6 +139,7 @@ id cat_places
 id cat_tree
 id cat_vehicles
 id container
+id current_email
 id forgot_passRedirectText
 id icon_menu
 id list_menu
@@ -152,6 +153,7 @@ id navigation_dashboard
 id navigation_home
 id navigation_menu
 id navigation_notifications
+id new_email
 id password_button
 id registerRedirectText
 id register_button
@@ -159,12 +161,14 @@ id register_email
 id register_name
 id register_password
 id reset_email
+id send_confirm_button
 id send_reset_button
 id text
 id text_dashboard
 id text_home
 id text_menu
 id text_notifications
+layout activity_change_email
 layout activity_forgot_password
 layout activity_login
 layout activity_main

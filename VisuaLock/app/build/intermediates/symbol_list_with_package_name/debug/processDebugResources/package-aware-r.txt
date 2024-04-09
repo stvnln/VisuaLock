@@ -3435,6 +3435,7 @@ id cos
 id counterclockwise
 id cradle
 id currentState
+id current_email
 id custom
 id customPanel
 id cut
@@ -3629,6 +3630,7 @@ id navigation_notifications
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
+id new_email
 id noScroll
 id noState
 id none
@@ -3716,6 +3718,7 @@ id search_voice_btn
 id select_dialog_listview
 id selected
 id selection_type
+id send_confirm_button
 id send_reset_button
 id sharedValueSet
 id sharedValueUnset
@@ -3947,6 +3950,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_change_email
 layout activity_forgot_password
 layout activity_login
 layout activity_main

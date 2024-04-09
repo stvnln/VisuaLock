@@ -4,6 +4,7 @@ package com.example.visualock.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -25,11 +26,16 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final BottomNavigationView navView;
 
+  @NonNull
+  public final Button sendConfirmButton;
+
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ConstraintLayout container, @NonNull BottomNavigationView navView) {
+      @NonNull ConstraintLayout container, @NonNull BottomNavigationView navView,
+      @NonNull Button sendConfirmButton) {
     this.rootView = rootView;
     this.container = container;
     this.navView = navView;
+    this.sendConfirmButton = sendConfirmButton;
   }
 
   @Override
@@ -67,7 +73,14 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, container, navView);
+      id = R.id.send_confirm_button;
+      Button sendConfirmButton = ViewBindings.findChildViewById(rootView, id);
+      if (sendConfirmButton == null) {
+        break missingId;
+      }
+
+      return new ActivityMainBinding((ConstraintLayout) rootView, container, navView,
+          sendConfirmButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
