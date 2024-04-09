@@ -18,11 +18,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
-
+import java.util.List;
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth auth;
-    private EditText registerEmail, registerPassword, registerName;
-    private Button registerButton;
+    private EditText registerEmail, registerName;
+
+    private Button registerPassword;
+    private Button createPassword;
     private TextView loginRedirectText;
     FirebaseFirestore database;
 
@@ -35,11 +37,29 @@ public class RegisterActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         database = FirebaseFirestore.getInstance();
         registerEmail = findViewById(R.id.register_email);
-        registerPassword = findViewById(R.id.register_password);
+        //registerPassword = findViewById(R.id.register_password);
         registerName = findViewById(R.id.register_name);
-        registerButton = findViewById(R.id.register_button);
+        createPassword = findViewById(R.id.create_password);
         loginRedirectText = findViewById(R.id.loginRedirectText);
 
+        // Set click listener for registerButton
+        createPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = registerName.getText().toString().trim();
+                String user = registerEmail.getText().toString().trim();
+
+                if (!isValidEmail(user)) {
+                    registerEmail.setError("Invalid email format");
+                    return;
+                }
+
+                // Proceed to password selection page
+                startActivity(new Intent(RegisterActivity.this, PasswordActivity.class));
+            }
+        });
+
+        /*
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,6 +139,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+    */
+
         loginRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,3 +155,4 @@ public class RegisterActivity extends AppCompatActivity {
         return email.matches(emailRegex);
     }
 }
+

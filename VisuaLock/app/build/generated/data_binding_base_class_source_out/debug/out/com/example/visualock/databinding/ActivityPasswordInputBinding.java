@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.visualock.R;
@@ -50,14 +49,11 @@ public final class ActivityPasswordInputBinding implements ViewBinding {
   @NonNull
   public final Button loginButton;
 
-  @NonNull
-  public final RecyclerView passwordReceiver;
-
   private ActivityPasswordInputBinding(@NonNull ConstraintLayout rootView,
       @NonNull CardView PasswordCardView, @NonNull ImageView backButton,
       @NonNull ListView catAnimals, @NonNull ListView catColor, @NonNull ListView catDailyObjects,
       @NonNull ListView catPlaces, @NonNull ListView catTree, @NonNull ListView catVehicles,
-      @NonNull Button loginButton, @NonNull RecyclerView passwordReceiver) {
+      @NonNull Button loginButton) {
     this.rootView = rootView;
     this.PasswordCardView = PasswordCardView;
     this.backButton = backButton;
@@ -68,7 +64,6 @@ public final class ActivityPasswordInputBinding implements ViewBinding {
     this.catTree = catTree;
     this.catVehicles = catVehicles;
     this.loginButton = loginButton;
-    this.passwordReceiver = passwordReceiver;
   }
 
   @Override
@@ -152,15 +147,9 @@ public final class ActivityPasswordInputBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.password_receiver;
-      RecyclerView passwordReceiver = ViewBindings.findChildViewById(rootView, id);
-      if (passwordReceiver == null) {
-        break missingId;
-      }
-
       return new ActivityPasswordInputBinding((ConstraintLayout) rootView, PasswordCardView,
           backButton, catAnimals, catColor, catDailyObjects, catPlaces, catTree, catVehicles,
-          loginButton, passwordReceiver);
+          loginButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

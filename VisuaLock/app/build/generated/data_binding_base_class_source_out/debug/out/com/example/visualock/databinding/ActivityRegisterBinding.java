@@ -26,10 +26,10 @@ public final class ActivityRegisterBinding implements ViewBinding {
   public final CardView RegisterCardView;
 
   @NonNull
-  public final TextView loginRedirectText;
+  public final Button createPassword;
 
   @NonNull
-  public final Button registerButton;
+  public final TextView loginRedirectText;
 
   @NonNull
   public final EditText registerEmail;
@@ -37,20 +37,16 @@ public final class ActivityRegisterBinding implements ViewBinding {
   @NonNull
   public final EditText registerName;
 
-  @NonNull
-  public final EditText registerPassword;
-
   private ActivityRegisterBinding(@NonNull ConstraintLayout rootView,
-      @NonNull CardView RegisterCardView, @NonNull TextView loginRedirectText,
-      @NonNull Button registerButton, @NonNull EditText registerEmail,
-      @NonNull EditText registerName, @NonNull EditText registerPassword) {
+      @NonNull CardView RegisterCardView, @NonNull Button createPassword,
+      @NonNull TextView loginRedirectText, @NonNull EditText registerEmail,
+      @NonNull EditText registerName) {
     this.rootView = rootView;
     this.RegisterCardView = RegisterCardView;
+    this.createPassword = createPassword;
     this.loginRedirectText = loginRedirectText;
-    this.registerButton = registerButton;
     this.registerEmail = registerEmail;
     this.registerName = registerName;
-    this.registerPassword = registerPassword;
   }
 
   @Override
@@ -86,15 +82,15 @@ public final class ActivityRegisterBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.loginRedirectText;
-      TextView loginRedirectText = ViewBindings.findChildViewById(rootView, id);
-      if (loginRedirectText == null) {
+      id = R.id.create_password;
+      Button createPassword = ViewBindings.findChildViewById(rootView, id);
+      if (createPassword == null) {
         break missingId;
       }
 
-      id = R.id.register_button;
-      Button registerButton = ViewBindings.findChildViewById(rootView, id);
-      if (registerButton == null) {
+      id = R.id.loginRedirectText;
+      TextView loginRedirectText = ViewBindings.findChildViewById(rootView, id);
+      if (loginRedirectText == null) {
         break missingId;
       }
 
@@ -110,14 +106,8 @@ public final class ActivityRegisterBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.register_password;
-      EditText registerPassword = ViewBindings.findChildViewById(rootView, id);
-      if (registerPassword == null) {
-        break missingId;
-      }
-
       return new ActivityRegisterBinding((ConstraintLayout) rootView, RegisterCardView,
-          loginRedirectText, registerButton, registerEmail, registerName, registerPassword);
+          createPassword, loginRedirectText, registerEmail, registerName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
