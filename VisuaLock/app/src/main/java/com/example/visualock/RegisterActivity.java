@@ -1,6 +1,5 @@
 package com.example.visualock;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,20 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth auth;
-    private EditText registerEmail, registerPassword, registerName;
-    private Button registerButton;
+    private EditText registerEmail, registerName;
+
+    private Button registerPassword;
+    private Button createPassword;
+    private FloatingActionButton helpButton;
     private TextView loginRedirectText;
     FirebaseFirestore database;
 
@@ -35,11 +32,41 @@ public class RegisterActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         database = FirebaseFirestore.getInstance();
         registerEmail = findViewById(R.id.register_email);
-        registerPassword = findViewById(R.id.register_password);
+        //registerPassword = findViewById(R.id.register_password);
         registerName = findViewById(R.id.register_name);
-        registerButton = findViewById(R.id.register_button);
+        createPassword = findViewById(R.id.create_password);
         loginRedirectText = findViewById(R.id.loginRedirectText);
+        helpButton = findViewById(R.id.helpbutton);
 
+        // Set click listener for registerButton
+        createPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = registerName.getText().toString().trim();
+                String user = registerEmail.getText().toString().trim();
+
+                if (!isValidEmail(user)) {
+                    registerEmail.setError("Invalid email format");
+                    return;
+                }
+
+                // Proceed to password selection page
+                Intent registerIntent = new Intent(RegisterActivity.this, PasswordActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("email", user);
+                bundle.putString("name", name);
+                bundle.putString("from_activity", "register");
+                registerIntent.putExtras(bundle);
+                startActivity(registerIntent);
+            }
+        });
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegisterActivity.this, HelpActivity.class));
+            }
+        });
+        /*
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,6 +146,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+    */
+
         loginRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,3 +162,4 @@ public class RegisterActivity extends AppCompatActivity {
         return email.matches(emailRegex);
     }
 }
+

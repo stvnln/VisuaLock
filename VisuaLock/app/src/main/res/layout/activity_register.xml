@@ -7,6 +7,19 @@
     android:background="#ffff"
     tools:context=".RegisterActivity">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/helpbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="44dp"
+        android:clickable="true"
+        android:contentDescription="Back"
+        app:backgroundTint="@color/lavender"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_help" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/RegisterCardView"
         android:layout_width="0dp"
@@ -61,24 +74,11 @@
                 android:drawablePadding="8dp"
                 android:textColor="@color/black"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:id="@+id/register_password"
-                android:background="@drawable/custom_edittext"
-                android:layout_marginTop="20dp"
-                android:padding="8dp"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:drawableLeft="@drawable/baseline_lock_24"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
-
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/register_button"
-                android:text="Register"
+                android:id="@+id/create_password"
+                android:text="Create Password"
                 android:background="@drawable/custom_edittext"
                 android:textSize="18sp"
                 android:textColor="@color/white"
