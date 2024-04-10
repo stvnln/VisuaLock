@@ -26,6 +26,7 @@ drawable ic_notifications_black_24dp
 drawable info_24
 drawable letter
 drawable logout_24
+drawable remove
 drawable setting_24
 drawable user_24
 id ForgotPasswordCardView
