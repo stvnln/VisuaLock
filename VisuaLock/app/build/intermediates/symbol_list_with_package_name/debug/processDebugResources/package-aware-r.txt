@@ -3086,6 +3086,7 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable grid_item_selector
 drawable ic_arrow_back_black_24
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
@@ -3191,6 +3192,7 @@ id ForgotPasswordCardView
 id LoginCardView
 id META
 id NO_DEBUG
+id PasswordCardView
 id RegisterCardView
 id SHIFT
 id SHOW_ALL
@@ -3297,6 +3299,12 @@ id cache_measures
 id callMeasure
 id cancel_button
 id carryVelocity
+id cat_animals
+id cat_color
+id cat_dailyObjects
+id cat_places
+id cat_tree
+id cat_vehicles
 id center
 id centerCrop
 id centerInside
@@ -3327,6 +3335,7 @@ id coordinator
 id cos
 id counterclockwise
 id cradle
+id create_password
 id currentState
 id custom
 id customPanel
@@ -3373,6 +3382,7 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
+id enterButton
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3396,6 +3406,7 @@ id frost
 id fullscreen_header
 id ghost_view
 id ghost_view_holder
+id glide_custom_view_target_tag
 id gone
 id graph
 id graph_wrap
@@ -3407,6 +3418,7 @@ id hideable
 id home
 id homeAsUp
 id honorRequest
+id horizontalScrollView
 id horizontal_only
 id icon
 id icon_group
@@ -3420,6 +3432,8 @@ id immediateStop
 id included
 id indeterminate
 id info
+id inputHorizontalScrollView
+id inputView
 id invisible
 id inward
 id italic
@@ -3435,14 +3449,13 @@ id light
 id line1
 id line3
 id linear
+id linearLayout
 id listMode
 id list_item
 id list_menu
 id locale
 id loginRedirectText
-id login_button
 id login_email
-id login_password
 id ltr
 id m3_side_sheet
 id marquee
@@ -3557,6 +3570,7 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
+id password_button
 id password_toggle
 id path
 id pathRelative
@@ -3572,10 +3586,8 @@ id radio
 id ratio
 id rectangles
 id registerRedirectText
-id register_button
 id register_email
 id register_name
-id register_password
 id report_drawn
 id reset_email
 id reverseSawtooth
@@ -3840,12 +3852,15 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_add_image
 layout activity_forgot_password
 layout activity_login
 layout activity_main
+layout activity_password_input
 layout activity_register
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
+layout change_email
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
