@@ -26,10 +26,10 @@ public final class ActivityLoginBinding implements ViewBinding {
   public final CardView LoginCardView;
 
   @NonNull
-  public final TextView forgotPassRedirectText;
+  public final Button loginButton;
 
   @NonNull
-  public final Button loginButton;
+  public final TextView loginByGraph;
 
   @NonNull
   public final EditText loginEmail;
@@ -37,20 +37,15 @@ public final class ActivityLoginBinding implements ViewBinding {
   @NonNull
   public final EditText loginPassword;
 
-  @NonNull
-  public final TextView registerRedirectText;
-
   private ActivityLoginBinding(@NonNull ConstraintLayout rootView, @NonNull CardView LoginCardView,
-      @NonNull TextView forgotPassRedirectText, @NonNull Button loginButton,
-      @NonNull EditText loginEmail, @NonNull EditText loginPassword,
-      @NonNull TextView registerRedirectText) {
+      @NonNull Button loginButton, @NonNull TextView loginByGraph, @NonNull EditText loginEmail,
+      @NonNull EditText loginPassword) {
     this.rootView = rootView;
     this.LoginCardView = LoginCardView;
-    this.forgotPassRedirectText = forgotPassRedirectText;
     this.loginButton = loginButton;
+    this.loginByGraph = loginByGraph;
     this.loginEmail = loginEmail;
     this.loginPassword = loginPassword;
-    this.registerRedirectText = registerRedirectText;
   }
 
   @Override
@@ -86,15 +81,15 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.forgot_passRedirectText;
-      TextView forgotPassRedirectText = ViewBindings.findChildViewById(rootView, id);
-      if (forgotPassRedirectText == null) {
-        break missingId;
-      }
-
       id = R.id.login_button;
       Button loginButton = ViewBindings.findChildViewById(rootView, id);
       if (loginButton == null) {
+        break missingId;
+      }
+
+      id = R.id.loginByGraph;
+      TextView loginByGraph = ViewBindings.findChildViewById(rootView, id);
+      if (loginByGraph == null) {
         break missingId;
       }
 
@@ -110,14 +105,8 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.registerRedirectText;
-      TextView registerRedirectText = ViewBindings.findChildViewById(rootView, id);
-      if (registerRedirectText == null) {
-        break missingId;
-      }
-
-      return new ActivityLoginBinding((ConstraintLayout) rootView, LoginCardView,
-          forgotPassRedirectText, loginButton, loginEmail, loginPassword, registerRedirectText);
+      return new ActivityLoginBinding((ConstraintLayout) rootView, LoginCardView, loginButton,
+          loginByGraph, loginEmail, loginPassword);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

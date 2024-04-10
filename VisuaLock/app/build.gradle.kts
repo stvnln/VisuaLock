@@ -44,11 +44,16 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("androidx.navigation:navigation-fragment:2.7.6")
     implementation("androidx.navigation:navigation-ui:2.7.6")
+    implementation("androidx.activity:activity:1.8.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.google.firebase:firebase-firestore:24.10.3")
     implementation ("com.google.android.gms:play-services-auth:20.2.0")
-    implementation("com.google.firebase:firebase-auth:22.0.0")
-
+    implementation("com.google.firebase:firebase-auth:20.0.0")
+    implementation ("com.google.firebase:firebase-storage:19.1.1")
+    implementation ("com.squareup.picasso:picasso:2.71828")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+    implementation ("at.favre.lib:bcrypt:0.9.0")
 }
