@@ -40,6 +40,7 @@ id cat_places
 id cat_tree
 id cat_vehicles
 id container
+id create_password
 id forgot_passRedirectText
 id horizontalScrollView
 id icon_menu
@@ -56,12 +57,9 @@ id navigation_home
 id navigation_menu
 id navigation_notifications
 id password_button
-id password_receiver
 id registerRedirectText
-id register_button
 id register_email
 id register_name
-id register_password
 id reset_email
 id send_reset_button
 id text

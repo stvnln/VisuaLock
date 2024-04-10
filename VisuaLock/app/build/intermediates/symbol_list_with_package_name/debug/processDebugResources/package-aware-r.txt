@@ -3335,6 +3335,7 @@ id coordinator
 id cos
 id counterclockwise
 id cradle
+id create_password
 id currentState
 id custom
 id customPanel
@@ -3568,7 +3569,6 @@ id parentPanel
 id parentRelative
 id parent_matrix
 id password_button
-id password_receiver
 id password_toggle
 id path
 id pathRelative
@@ -3584,10 +3584,8 @@ id radio
 id ratio
 id rectangles
 id registerRedirectText
-id register_button
 id register_email
 id register_name
-id register_password
 id report_drawn
 id reset_email
 id reverseSawtooth

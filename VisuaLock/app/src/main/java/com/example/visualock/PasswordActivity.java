@@ -199,7 +199,7 @@ public class PasswordActivity extends AppCompatActivity {
 
 
 
-                RecyclerView recyclerView = findViewById(R.id.password_receiver);
+                //RecyclerView recyclerView = findViewById(R.id.password_receiver);
                 Tree.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -218,6 +218,8 @@ public class PasswordActivity extends AppCompatActivity {
 
                     }
                 });
+
+
                 dailyObjects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
