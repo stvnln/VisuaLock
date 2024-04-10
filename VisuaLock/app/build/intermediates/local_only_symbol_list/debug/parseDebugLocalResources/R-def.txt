@@ -41,13 +41,15 @@ id cat_tree
 id cat_vehicles
 id container
 id create_password
+id enterButton
 id forgot_passRedirectText
 id horizontalScrollView
 id icon_menu
+id inputHorizontalScrollView
+id inputView
 id linearLayout
 id list_menu
 id loginRedirectText
-id login_button
 id login_email
 id mobile_navigation
 id nav_host_fragment_activity_main

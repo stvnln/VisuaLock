@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,13 +49,20 @@ public final class ActivityPasswordInputBinding implements ViewBinding {
   public final ListView catVehicles;
 
   @NonNull
-  public final Button loginButton;
+  public final Button enterButton;
+
+  @NonNull
+  public final HorizontalScrollView inputHorizontalScrollView;
+
+  @NonNull
+  public final LinearLayout inputView;
 
   private ActivityPasswordInputBinding(@NonNull ConstraintLayout rootView,
       @NonNull CardView PasswordCardView, @NonNull ImageView backButton,
       @NonNull ListView catAnimals, @NonNull ListView catColor, @NonNull ListView catDailyObjects,
       @NonNull ListView catPlaces, @NonNull ListView catTree, @NonNull ListView catVehicles,
-      @NonNull Button loginButton) {
+      @NonNull Button enterButton, @NonNull HorizontalScrollView inputHorizontalScrollView,
+      @NonNull LinearLayout inputView) {
     this.rootView = rootView;
     this.PasswordCardView = PasswordCardView;
     this.backButton = backButton;
@@ -63,7 +72,9 @@ public final class ActivityPasswordInputBinding implements ViewBinding {
     this.catPlaces = catPlaces;
     this.catTree = catTree;
     this.catVehicles = catVehicles;
-    this.loginButton = loginButton;
+    this.enterButton = enterButton;
+    this.inputHorizontalScrollView = inputHorizontalScrollView;
+    this.inputView = inputView;
   }
 
   @Override
@@ -141,15 +152,27 @@ public final class ActivityPasswordInputBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.login_button;
-      Button loginButton = ViewBindings.findChildViewById(rootView, id);
-      if (loginButton == null) {
+      id = R.id.enterButton;
+      Button enterButton = ViewBindings.findChildViewById(rootView, id);
+      if (enterButton == null) {
+        break missingId;
+      }
+
+      id = R.id.inputHorizontalScrollView;
+      HorizontalScrollView inputHorizontalScrollView = ViewBindings.findChildViewById(rootView, id);
+      if (inputHorizontalScrollView == null) {
+        break missingId;
+      }
+
+      id = R.id.inputView;
+      LinearLayout inputView = ViewBindings.findChildViewById(rootView, id);
+      if (inputView == null) {
         break missingId;
       }
 
       return new ActivityPasswordInputBinding((ConstraintLayout) rootView, PasswordCardView,
           backButton, catAnimals, catColor, catDailyObjects, catPlaces, catTree, catVehicles,
-          loginButton);
+          enterButton, inputHorizontalScrollView, inputView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -1,178 +1,182 @@
 [
     {
-        "merged": "com.example.visualock.app-debug-51:/layout_activity_main.xml.flat",
-        "source": "com.example.visualock.app-main-53:/layout/activity_main.xml"
-    },
-    {
-        "merged": "com.example.visualock.app-debug-51:/drawable_baseline_person_24.xml.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/baseline_person_24.xml"
-    },
-    {
-        "merged": "com.example.visualock.app-debug-51:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.visualock.app-main-53:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_custom_edittext.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/custom_edittext.xml"
     },
     {
         "merged": "com.example.visualock.app-debug-51:/layout_activity_password_input.xml.flat",
         "source": "com.example.visualock.app-main-53:/layout/activity_password_input.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.visualock.app-main-53:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_setting_24.png.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/setting_24.png"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_letter.png.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/letter.png"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_grid_item_selector.xml.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/grid_item_selector.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_baseline_person_24.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/baseline_person_24.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/layout_activity_register.xml.flat",
-        "source": "com.example.visualock.app-main-53:/layout/activity_register.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/layout_change_email.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/change_email.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.visualock.app-main-53:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/layout_activity_password_input.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/activity_password_input.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_info_24.png.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/info_24.png"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_user_24.png.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/user_24.png"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/layout_activity_login.xml.flat",
-        "source": "com.example.visualock.app-main-53:/layout/activity_login.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/layout_menu_item.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/menu_item.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_setting_24.png.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/setting_24.png"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_grid_item_selector.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/grid_item_selector.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_logout_24.png.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/logout_24.png"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/layout_activity_main.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_ic_dashboard_black_24dp.xml.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/ic_dashboard_black_24dp.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.visualock.app-main-53:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.visualock.app-main-53:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_info_24.png.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/info_24.png"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/layout_change_email.xml.flat",
-        "source": "com.example.visualock.app-main-53:/layout/change_email.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.visualock.app-main-53:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/layout_menu_item.xml.flat",
-        "source": "com.example.visualock.app-main-53:/layout/menu_item.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_baseline_density_medium_24.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/baseline_density_medium_24.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_user_24.png.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/user_24.png"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_ic_home_black_24dp.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/ic_home_black_24dp.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.visualock.app-main-53:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/layout_activity_forgot_password.xml.flat",
-        "source": "com.example.visualock.app-main-53:/layout/activity_forgot_password.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/ic_launcher_background.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/navigation_mobile_navigation.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/navigation/mobile_navigation.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.visualock.app-main-53:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/layout_fragment_home.xml.flat",
-        "source": "com.example.visualock.app-main-53:/layout/fragment_home.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/layout_fragment_dashboard.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/fragment_dashboard.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.visualock.app-main-53:/xml/data_extraction_rules.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/navigation_mobile_navigation.xml.flat",
-        "source": "com.example.visualock.app-main-53:/navigation/mobile_navigation.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/menu_bottom_nav_menu.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/menu/bottom_nav_menu.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/layout_fragment_menu.xml.flat",
-        "source": "com.example.visualock.app-main-53:/layout/fragment_menu.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_ic_dashboard_black_24dp.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/ic_dashboard_black_24dp.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_baseline_density_medium_24.xml.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/baseline_density_medium_24.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_baseline_arrow_back_24.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/baseline_arrow_back_24.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_baseline_lock_24.xml.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/baseline_lock_24.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/layout_activity_forgot_password.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/activity_forgot_password.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_baseline_arrow_back_24.xml.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/baseline_arrow_back_24.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/layout_fragment_dashboard.xml.flat",
-        "source": "com.example.visualock.app-main-53:/layout/fragment_dashboard.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/xml_backup_rules.xml.flat",
-        "source": "com.example.visualock.app-main-53:/xml/backup_rules.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_letter.png.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/letter.png"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_ic_notifications_black_24dp.xml.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/ic_notifications_black_24dp.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/layout_fragment_notifications.xml.flat",
-        "source": "com.example.visualock.app-main-53:/layout/fragment_notifications.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/layout_activity_add_image.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/activity_add_image.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.visualock.app-main-53:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/ic_launcher_foreground.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/layout_fragment_menu.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/fragment_menu.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/layout_activity_add_image.xml.flat",
-        "source": "com.example.visualock.app-main-53:/layout/activity_add_image.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/layout_activity_register.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/activity_register.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_custom_edittext.xml.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/custom_edittext.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.visualock.app-main-53:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/layout_activity_login.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/activity_login.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.visualock.app-main-53:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_logout_24.png.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/logout_24.png"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/drawable_ic_home_black_24dp.xml.flat",
-        "source": "com.example.visualock.app-main-53:/drawable/ic_home_black_24dp.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_baseline_lock_24.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/baseline_lock_24.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/menu_bottom_nav_menu.xml.flat",
-        "source": "com.example.visualock.app-main-53:/menu/bottom_nav_menu.xml"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/layout_fragment_notifications.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/fragment_notifications.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.visualock.app-main-53:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/layout_fragment_home.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/xml_backup_rules.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_ic_notifications_black_24dp.xml.flat",
+        "source": "/Users/steve/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/ic_notifications_black_24dp.xml"
     }
 ]

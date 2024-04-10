@@ -55,7 +55,13 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 // Proceed to password selection page
-                startActivity(new Intent(RegisterActivity.this, PasswordActivity.class));
+                Intent registerIntent = new Intent(RegisterActivity.this, PasswordActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("email", user);
+                bundle.putString("name", name);
+                bundle.putString("from_activity", "register");
+                registerIntent.putExtras(bundle);
+                startActivity(registerIntent);
             }
         });
 

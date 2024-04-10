@@ -18,25 +18,43 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.api.Distribution;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 public class PasswordActivity extends AppCompatActivity {
     private FirebaseAuth auth;
+    FirebaseFirestore database;
+
     private FirebaseFirestore firestore;
+    private ArrayList<String> colorImages;
+    private ArrayList<String> treeImages;
+    private ArrayList<String> dailyObjectsImages;
+    private ArrayList<String> animalImages;
+    private ArrayList<String> placesImages;
+    private ArrayList<String> vehicleImages;
+
+    private ArrayList<String> keyList;
+    private final HashMap<String, List<String>> passwordKey = new HashMap<String, List<String>>();
+    private Button enter;
+
+    private LinearLayout inputView;
+
 
 
 
@@ -85,26 +103,29 @@ public class PasswordActivity extends AppCompatActivity {
      }
 
 
-    private ArrayList<String> colorImages;
-    private ArrayList<String> treeImages;
-    private ArrayList<String> dailyObjectsImages;
-    private ArrayList<String> animalImages;
-    private ArrayList<String> placesImages;
-    private ArrayList<String> vehicleImages;
-
-    ArrayList<String> inputImages = new ArrayList<>();
-    ArrayList<String> input = new ArrayList<>();
-    private ArrayList<String> keyList;
-    private final HashMap<String, List<String>> passwordKey = new HashMap<String, List<String>>();
 
 
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_input);
 
+        Bundle bundle = new Bundle();
+
+        bundle = getIntent().getExtras();
 
 
+
+        database = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
+
+        enter = findViewById(R.id.enterButton);
+        inputView = findViewById(R.id.inputView);
+
+
+
         DocumentReference key = firestore.collection("image_categories").document("key");
         key.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -142,6 +163,7 @@ public class PasswordActivity extends AppCompatActivity {
             }
         });
         DocumentReference image_categories =  firestore.collection("image_categories").document("qPQROdVyhejjFHqYySWo");
+        Bundle finalBundle = bundle;
         image_categories.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot document) {
@@ -195,27 +217,121 @@ public class PasswordActivity extends AppCompatActivity {
                 Places.setAdapter(new ImageAdapter(PasswordActivity.this, placesImages));
                 ListView Vehicle = findViewById(R.id.cat_vehicles);
                 Vehicle.setAdapter(new ImageAdapter(PasswordActivity.this,vehicleImages));
+                ArrayList<String> inputImages = new ArrayList<>();
+                ArrayList<String> input = new ArrayList<>();
+                enter.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        String pass = input.toString();
+                        String email = finalBundle.getString("email");
+                        String from_activity = finalBundle.getString("from_activity");
+                        if (from_activity.equals("login")) {
 
 
+                            auth.signInWithEmailAndPassword(email, pass)
+                                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                                                @Override
+                                                public void onSuccess(AuthResult authResult) {
+                                                    Toast.makeText(PasswordActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                                    updatePasswordInFirestore(email, pass);
+                                                    Intent intent = new Intent(PasswordActivity.this, MainActivity.class);
+                                                    intent.putExtra("email", email);
+                                                    startActivity(intent);
+                                                    finish();
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Toast.makeText(PasswordActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                        } else if (from_activity.equals("register")) {
+                            String name = finalBundle.getString("name");
+
+                            User user1 = new User(name, email, pass);
 
 
-                //RecyclerView recyclerView = findViewById(R.id.password_receiver);
+                            // Create user with email and password
+                            auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                                        if (currentUser != null) {
+                                            currentUser.sendEmailVerification()
+                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if (task.isSuccessful()) {
+                                                                Toast.makeText(PasswordActivity.this, "Verification email sent. Please verify your email address.", Toast.LENGTH_SHORT).show();
+                                                            } else {
+                                                                Toast.makeText(PasswordActivity.this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        }
+                                                    });
+                                        }
+
+                                        String uid = task.getResult().getUser().getUid();
+                                        database
+                                                .collection("users")
+                                                .document(uid)
+                                                .set(user1)
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            Toast.makeText(PasswordActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                                                            startActivity(new Intent(PasswordActivity.this, LoginActivity.class));
+                                                            finish();
+                                                        } else {
+                                                            Toast.makeText(PasswordActivity.this, "Failed to set display name", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }
+                                                });
+
+                                        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                                .setDisplayName(name)
+                                                .build();
+
+                                        firebaseUser.updateProfile(profileUpdates)
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (!task.isSuccessful()) {
+                                                            Toast.makeText(PasswordActivity.this, "Failed to set display name", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }
+                                                });
+                                    } else {
+                                        Toast.makeText(PasswordActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }
+                    }
+            });
+
+
                 Tree.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(PasswordActivity.this, "Tree image clicked at position: " + passwordKey.get("treeImages").get(position), Toast.LENGTH_SHORT).show();
                         input.add(passwordKey.get("treeImages").get(position));
-                        inputImages.add(treeImages.get(position));
-
+                        ImageView image = new ImageView(PasswordActivity.this);
+                        image.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 150));
+                        Glide.with(PasswordActivity.this).load(treeImages.get(position)).into(image);
+                        inputView.addView(image);
                     }
                 });
                 Color.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(PasswordActivity.this, "Color image clicked at position: " + position, Toast.LENGTH_SHORT).show();
                         input.add(passwordKey.get("colorImages").get(position));
-                        inputImages.add(colorImages.get(position));
-
+                        ImageView image = new ImageView(PasswordActivity.this);
+                        image.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 150));
+                        Glide.with(PasswordActivity.this).load(colorImages.get(position)).into(image);
+                        inputView.addView(image);
                     }
                 });
 
@@ -223,37 +339,44 @@ public class PasswordActivity extends AppCompatActivity {
                 dailyObjects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(PasswordActivity.this, "Daily Object image clicked at position: " + position, Toast.LENGTH_SHORT).show();
                         input.add(passwordKey.get("dailyObjectsImages").get(position));
-                        inputImages.add(dailyObjectsImages.get(position));
+                        ImageView image = new ImageView(PasswordActivity.this);
+                        image.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 150));
+                        Glide.with(PasswordActivity.this).load(dailyObjectsImages.get(position)).into(image);
+                        inputView.addView(image);
 
                     }
                 });
                 Animals.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(PasswordActivity.this, "Animals image clicked at position: " + position, Toast.LENGTH_SHORT).show();
                         input.add(passwordKey.get("animalImages").get(position));
-                        inputImages.add(animalImages.get(position));
+                        ImageView image = new ImageView(PasswordActivity.this);
+                        image.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 150));
+                        Glide.with(PasswordActivity.this).load(animalImages.get(position)).into(image);
+                        inputView.addView(image);
 
                     }
                 });
                 Places.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(PasswordActivity.this, "Places image clicked at position: " + position, Toast.LENGTH_SHORT).show();
                         input.add(passwordKey.get("placesImages").get(position));
-                        inputImages.add(placesImages.get(position));
+                        ImageView image = new ImageView(PasswordActivity.this);
+                        image.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 150));
+                        Glide.with(PasswordActivity.this).load(placesImages.get(position)).into(image);
+                        inputView.addView(image);
 
                     }
                 });
                 Vehicle.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(PasswordActivity.this, "Vehicle image clicked at position: " + position, Toast.LENGTH_SHORT).show();
                         input.add(passwordKey.get("vehicleImages").get(position));
-                        inputImages.add(vehicleImages.get(position));
-
+                        ImageView image = new ImageView(PasswordActivity.this);
+                        image.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 150));
+                        Glide.with(PasswordActivity.this).load(vehicleImages.get(position)).into(image);
+                        inputView.addView(image);
                     }
                 });
             }
@@ -273,4 +396,23 @@ public class PasswordActivity extends AppCompatActivity {
          });
      }
 
+    private void updatePasswordInFirestore(final String email, final String password) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            DocumentReference userRef = firestore.collection("users").document(user.getUid());
+            userRef.update("pass", password)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            //Toast.makeText(LoginActivity.this, "Password updated in Firestore", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            //Toast.makeText(LoginActivity.this, "Failed to update password in Firestore", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+    }
 }
