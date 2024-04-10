@@ -11,9 +11,12 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.visualock.LoginActivity;
+import com.example.visualock.AboutActivity;
+import com.example.visualock.GraphLoginActivity;
+import com.example.visualock.ProfileActivity;
 import com.example.visualock.R;
 
+import com.example.visualock.SettingActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -43,18 +46,21 @@ public class MenuFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        // Navigate to profile page
+                        Intent profile = new Intent(requireContext(), ProfileActivity.class);
+                        startActivity(profile);
                         break;
                     case 1:
-                        // Navigate to about us page
+                        Intent about = new Intent(requireContext(), AboutActivity.class);
+                        startActivity(about);
                         break;
                     case 2:
-                        // Navigate to setting page
+                        Intent setting = new Intent(requireContext(), SettingActivity.class);
+                        startActivity(setting);
                         break;
                     case 3:
                         FirebaseAuth.getInstance().signOut();
-                        Intent i = new Intent(requireContext(), LoginActivity.class);
-                        startActivity(i);
+                        Intent logout = new Intent(requireContext(), GraphLoginActivity.class);
+                        startActivity(logout);
                         requireActivity().finish();
                         break;
                 }

@@ -653,16 +653,14 @@
     <color name="bright_foreground_inverse_material_light">@color/bright_foreground_material_dark</color>
     <color name="bright_foreground_material_dark">@android:color/white</color>
     <color name="bright_foreground_material_light">@android:color/black</color>
-    <color name="browser_actions_bg_grey">#F5F5F5</color>
-    <color name="browser_actions_divider_color">#1E000000</color>
-    <color name="browser_actions_text_color">#DE000000</color>
-    <color name="browser_actions_title_color">#646464</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
     <color name="cardview_dark_background">#FF424242</color>
     <color name="cardview_light_background">#FFFFFFFF</color>
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
+    <color name="circleBorder">#50FFFFFF</color>
+    <color name="colorAccent">#ed4337</color>
     <color name="common_google_signin_btn_text_dark_default">@android:color/white</color>
     <color name="common_google_signin_btn_text_dark_disabled">#1F000000</color>
     <color name="common_google_signin_btn_text_dark_focused">@android:color/black</color>
@@ -672,6 +670,7 @@
     <color name="common_google_signin_btn_text_light_focused">#90000000</color>
     <color name="common_google_signin_btn_text_light_pressed">#DE000000</color>
     <color name="dark_lavender">#6e7cf5</color>
+    <color name="darker_gray">#A9A9A9</color>
     <color name="design_bottom_navigation_shadow_color">#14000000</color>
     <color name="design_dark_default_color_background">#121212</color>
     <color name="design_dark_default_color_error">#CF6679</color>
@@ -715,7 +714,10 @@
     <color name="error_color_material_light">#ff5722</color>
     <color name="foreground_material_dark">@android:color/white</color>
     <color name="foreground_material_light">@android:color/black</color>
+    <color name="gradEnd">#6e7cf5</color>
+    <color name="gradStart">#8692f7</color>
     <color name="grey">#999090</color>
+    <color name="headings">#6e7cf5</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="lavender">#8692f7</color>
@@ -975,6 +977,7 @@
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
+    <color name="solidCircle">#AAFFFFFF</color>
     <color name="switch_thumb_disabled_material_dark">#ff616161</color>
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
@@ -1068,8 +1071,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="appcompat_dialog_background_inset">16dp</dimen>
-    <dimen name="browser_actions_context_menu_max_width">500dp</dimen>
-    <dimen name="browser_actions_context_menu_min_padding">20dp</dimen>
     <dimen name="cardview_compat_inset_shadow">1dp</dimen>
     <dimen name="cardview_default_elevation">2dp</dimen>
     <dimen name="cardview_default_radius">2dp</dimen>
@@ -1830,6 +1831,7 @@
     <item name="fragment_container_view_tag" type="id"/>
     <item name="ghost_view" type="id"/>
     <item name="ghost_view_holder" type="id"/>
+    <item name="glide_custom_view_target_tag" type="id"/>
     <item name="home" type="id"/>
     <item name="item_touch_helper_previous_elevation" type="id"/>
     <item name="line1" type="id"/>
@@ -2034,7 +2036,6 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
-    <string name="copy_toast_msg">Link copied to clipboard</string>
     <string name="dest_title">destination title</string>
     <string description="Screen reader announcement for when a checkbox is on error. [CHAR LIMIT=NONE]" name="error_a11y_label">
     Error: invalid
@@ -2043,9 +2044,6 @@
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior" translatable="false">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
-    <string name="fallback_menu_item_copy_link">Copy link</string>
-    <string name="fallback_menu_item_open_in_browser">Open in browser</string>
-    <string name="fallback_menu_item_share_link">Share link</string>
     <string name="firebase_database_url" translatable="false">https://visualock-1765a-default-rtdb.firebaseio.com</string>
     <string name="gcm_defaultSenderId" translatable="false">670767680986</string>
     <string name="google_api_key" translatable="false">AIzaSyCdQzoVJAh1Ny4M7pNS-QechXOZe2OsQW4</string>
@@ -2182,6 +2180,7 @@
     <string name="title_home">Home</string>
     <string name="title_menu">Menu</string>
     <string name="title_notifications">Notifications</string>
+    <string name="welcome_message">Dear User,\n\nWelcome to Visualock! We are delighted to have you onboard and thank you for choosing our service.\n\nVisualock offers a unique approach to securing your data using graphical passwords, allowing you to set personalized images as your passcodes. With our app, you can upload up to 30 images to create a robust and personalized security experience.\n\nTo get started, here\'s a brief guide on using the app:\n\n1. Navigate to the dashboard where you will find two main options.\n\n2. To set your custom password, upload your preferred image. You can upload a maximum of 30 images.\n\n3. Your uploaded images will be securely stored in Pass Storage.\n\n4. In Pass Storage, you will see a list of all your uploaded images. By toggling the switch, you can designate an image as your password.\n\n5. If you no longer need a particular image, you have the option to delete it.\n\n6. You can modify your email address (ensuring it is valid) and your username within the profile settings menu.\n\nDeveloped by Minh Le, Steven Lin, Paridhi Mistry, Dylan Miranda, Karriem Muhammad, and Makeda Abebe. Visualock is committed to providing you with a secure and user-friendly experience. Your privacy and security are our top priorities.\n\nCopyright © 2024. All Rights Reserved.\n\nThank you for trusting Visualock.\n\nSincerely,\n\nVISUALOCK\n\n\n\n\n\n</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
@@ -6592,6 +6591,15 @@
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
   </style>
+    <style name="Theme.NoSplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowDisablePreview">true</item>
+
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
     <style name="Theme.VisuaLock" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         
         <item name="colorPrimary">@color/lavender</item>

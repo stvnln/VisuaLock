@@ -21,13 +21,13 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
-    private FirebaseAuth auth;
     private EditText loginEmail, loginPassword;
     private TextView registerRedirectText;
+    private TextView loginByGraph;
     private TextView forgot_passRedirectText;
-    private FirebaseFirestore firestore;
     private Button loginButton;
 
+    private MyBackend myBackend;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,20 +36,17 @@ public class LoginActivity extends AppCompatActivity {
         // Check if the user is already authenticated
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
-            // User is already signed in, redirect to MainActivity
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            finish(); // Finish LoginActivity so that the user cannot navigate back to it
+            finish();
         }
-
-        auth = FirebaseAuth.getInstance();
-        firestore = FirebaseFirestore.getInstance();
-
+        myBackend = new MyBackend();
         loginEmail = findViewById(R.id.login_email);
         loginPassword = findViewById(R.id.login_password);
         loginButton = findViewById(R.id.login_button);
-        registerRedirectText = findViewById(R.id.registerRedirectText);
-        forgot_passRedirectText = findViewById(R.id.forgot_passRedirectText);
-
+        loginByGraph = findViewById(R.id.loginByGraph);
+        if(!myBackend.require.equals("")){
+            loginEmail.setText(myBackend.input_email);
+        }
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,23 +55,19 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     if (!pass.isEmpty()) {
-                        auth.signInWithEmailAndPassword(email, pass)
-                                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                                    @Override
-                                    public void onSuccess(AuthResult authResult) {
-                                        Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                        updatePasswordInFirestore(email, pass);
-                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                        intent.putExtra("email", email);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
+                        // login by text pass
+                        myBackend.logIn(email,pass).thenAccept(results -> {
+                            if(myBackend.isSucess(results)){
+                                Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                intent.putExtra("email", email);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else{
+                                Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     } else {
                         loginPassword.setError("Password cannot be empty");
                     }
@@ -86,38 +79,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        registerRedirectText.setOnClickListener(new View.OnClickListener() {
+        loginByGraph.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                startActivity(new Intent(LoginActivity.this, GraphLoginActivity.class));
             }
         });
-
-        forgot_passRedirectText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
-            }
-        });
-    }
-
-    private void updatePasswordInFirestore(final String email, final String password) {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            DocumentReference userRef = firestore.collection("users").document(user.getUid());
-            userRef.update("pass", password)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            //Toast.makeText(LoginActivity.this, "Password updated in Firestore", Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            //Toast.makeText(LoginActivity.this, "Failed to update password in Firestore", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        }
     }
 }

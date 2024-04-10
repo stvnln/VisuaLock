@@ -1,18 +1,18 @@
-#Sun Mar 10 22:50:17 EDT 2024
-base.0=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\FromGit\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\FromGit\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\FromGit\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
-base.3=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\FromGit\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\13\\classes.dex
-base.4=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\FromGit\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
-base.5=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\FromGit\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
-base.6=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\FromGit\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
-base.7=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\FromGit\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
-base.8=C\:\\Users\\MinhLe\\Documents\\1-GSU\\13-Spring Semester 2024\\CSC 4350 - Sadasivuni, Tushara Sadasivuni\\FromGit\\VisuaLock\\VisuaLock\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex
+#Wed Apr 10 11:47:11 EDT 2024
+base.0=/Users/minhle28/Documents/GSU/myGithub/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/minhle28/Documents/GSU/myGithub/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/Users/minhle28/Documents/GSU/myGithub/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeProjectDexDebug/1/classes.dex
+base.3=/Users/minhle28/Documents/GSU/myGithub/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex
+base.4=/Users/minhle28/Documents/GSU/myGithub/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeProjectDexDebug/13/classes.dex
+base.5=/Users/minhle28/Documents/GSU/myGithub/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeProjectDexDebug/8/classes.dex
+base.6=/Users/minhle28/Documents/GSU/myGithub/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
+base.7=/Users/minhle28/Documents/GSU/myGithub/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
+base.8=/Users/minhle28/Documents/GSU/myGithub/VisuaLock/VisuaLock/app/build/intermediates/dex/debug/mergeExtDexDebug/classes3.dex
 path.0=classes.dex
 path.1=0/classes.dex
-path.2=11/classes.dex
-path.3=13/classes.dex
-path.4=1/classes.dex
+path.2=1/classes.dex
+path.3=11/classes.dex
+path.4=13/classes.dex
 path.5=8/classes.dex
 path.6=9/classes.dex
 path.7=classes2.dex

@@ -61,22 +61,11 @@
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/forgot_passRedirectText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="10dp"
-                android:padding="8dp"
-                android:text="Forgot password?"
-                android:textColor="@color/lavender"
-                android:textSize="16sp" />
-
             <Button
                 android:id="@+id/login_button"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
                 android:backgroundTint="@color/lavender"
                 android:text="Login"
@@ -84,13 +73,13 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/registerRedirectText"
+                android:id="@+id/loginByGraph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
-                android:text="Don't have an account? Register"
+                android:text="Login by Graphical!"
                 android:textColor="@color/lavender"
                 android:textSize="16sp" />
 
