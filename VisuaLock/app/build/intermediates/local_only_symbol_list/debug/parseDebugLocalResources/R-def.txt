@@ -67,6 +67,8 @@ id register_name
 id reset_email
 id send_reset_button
 id text
+id textView
+id textView2
 id text_dashboard
 id text_home
 id text_menu

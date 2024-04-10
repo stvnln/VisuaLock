@@ -4,16 +4,16 @@
         "source": "/Users/dylanmiranda/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/activity_add_image.xml"
     },
     {
-        "merged": "com.example.visualock.app-mergeDebugResources-50:/layout/activity_register.xml",
-        "source": "com.example.visualock.app-main-53:/layout/activity_register.xml"
-    },
-    {
         "merged": "com.example.visualock.app-mergeDebugResources-50:/layout/activity_help.xml",
         "source": "com.example.visualock.app-main-53:/layout/activity_help.xml"
     },
     {
         "merged": "/Users/dylanmiranda/.gradle/daemon/8.4/com.example.visualock.app-mergeDebugResources-50:/layout/activity_password_input.xml",
         "source": "/Users/dylanmiranda/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/activity_password_input.xml"
+    },
+    {
+        "merged": "/Users/dylanmiranda/.gradle/daemon/8.4/com.example.visualock.app-mergeDebugResources-50:/layout/activity_help.xml",
+        "source": "/Users/dylanmiranda/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/activity_help.xml"
     },
     {
         "merged": "/Users/dylanmiranda/.gradle/daemon/8.4/com.example.visualock.app-mergeDebugResources-50:/layout/change_email.xml",

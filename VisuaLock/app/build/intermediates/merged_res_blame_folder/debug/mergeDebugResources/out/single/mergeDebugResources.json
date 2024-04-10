@@ -24,10 +24,6 @@
         "source": "/Users/dylanmiranda/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/menu_item.xml"
     },
     {
-        "merged": "com.example.visualock.app-debug-51:/layout_activity_register.xml.flat",
-        "source": "com.example.visualock.app-main-53:/layout/activity_register.xml"
-    },
-    {
         "merged": "/Users/dylanmiranda/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_user_24.png.flat",
         "source": "/Users/dylanmiranda/.gradle/daemon/8.4/com.example.visualock.app-main-53:/drawable/user_24.png"
     },
@@ -50,6 +46,10 @@
     {
         "merged": "/Users/dylanmiranda/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/xml_backup_rules.xml.flat",
         "source": "/Users/dylanmiranda/.gradle/daemon/8.4/com.example.visualock.app-main-53:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/Users/dylanmiranda/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/layout_activity_help.xml.flat",
+        "source": "/Users/dylanmiranda/.gradle/daemon/8.4/com.example.visualock.app-main-53:/layout/activity_help.xml"
     },
     {
         "merged": "/Users/dylanmiranda/.gradle/daemon/8.4/com.example.visualock.app-debug-51:/drawable_logout_24.png.flat",

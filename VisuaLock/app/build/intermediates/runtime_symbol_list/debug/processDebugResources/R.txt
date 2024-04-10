@@ -3684,6 +3684,8 @@ int id textSpacerNoButtons 0x7f0801f0
 int id textSpacerNoTitle 0x7f0801f1
 int id textStart 0x7f0801f2
 int id textTop 0x7f0801f3
+int id textView 0x7f08022b
+int id textView2 0x7f08022c
 int id text_dashboard 0x7f0801f4
 int id text_home 0x7f0801f5
 int id text_input_end_icon 0x7f0801f6

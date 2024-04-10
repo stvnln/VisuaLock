@@ -4,6 +4,7 @@ package com.example.visualock.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -22,10 +23,19 @@ public final class ActivityHelpBinding implements ViewBinding {
   @NonNull
   public final FloatingActionButton backbutton;
 
+  @NonNull
+  public final TextView textView;
+
+  @NonNull
+  public final TextView textView2;
+
   private ActivityHelpBinding(@NonNull ConstraintLayout rootView,
-      @NonNull FloatingActionButton backbutton) {
+      @NonNull FloatingActionButton backbutton, @NonNull TextView textView,
+      @NonNull TextView textView2) {
     this.rootView = rootView;
     this.backbutton = backbutton;
+    this.textView = textView;
+    this.textView2 = textView2;
   }
 
   @Override
@@ -61,7 +71,19 @@ public final class ActivityHelpBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityHelpBinding((ConstraintLayout) rootView, backbutton);
+      id = R.id.textView;
+      TextView textView = ViewBindings.findChildViewById(rootView, id);
+      if (textView == null) {
+        break missingId;
+      }
+
+      id = R.id.textView2;
+      TextView textView2 = ViewBindings.findChildViewById(rootView, id);
+      if (textView2 == null) {
+        break missingId;
+      }
+
+      return new ActivityHelpBinding((ConstraintLayout) rootView, backbutton, textView, textView2);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
