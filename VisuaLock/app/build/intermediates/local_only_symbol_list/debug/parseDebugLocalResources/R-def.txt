@@ -33,6 +33,7 @@ id LoginCardView
 id PasswordCardView
 id RegisterCardView
 id backButton
+id backbutton
 id cat_animals
 id cat_color
 id cat_dailyObjects
@@ -43,6 +44,7 @@ id container
 id create_password
 id enterButton
 id forgot_passRedirectText
+id helpbutton
 id horizontalScrollView
 id icon_menu
 id inputHorizontalScrollView
@@ -71,6 +73,7 @@ id text_menu
 id text_notifications
 layout activity_add_image
 layout activity_forgot_password
+layout activity_help
 layout activity_login
 layout activity_main
 layout activity_password_input

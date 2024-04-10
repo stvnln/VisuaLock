@@ -3278,6 +3278,7 @@ id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
 id backButton
+id backbutton
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3414,6 +3415,7 @@ id group_divider
 id grouping
 id groups
 id header_title
+id helpbutton
 id hideable
 id home
 id homeAsUp
@@ -3854,6 +3856,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_add_image
 layout activity_forgot_password
+layout activity_help
 layout activity_login
 layout activity_main
 layout activity_password_input

@@ -1,6 +1,5 @@
 package com.example.visualock;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,22 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
-import java.util.List;
+
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private EditText registerEmail, registerName;
 
     private Button registerPassword;
     private Button createPassword;
+    private FloatingActionButton helpButton;
     private TextView loginRedirectText;
     FirebaseFirestore database;
 
@@ -41,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerName = findViewById(R.id.register_name);
         createPassword = findViewById(R.id.create_password);
         loginRedirectText = findViewById(R.id.loginRedirectText);
+        helpButton = findViewById(R.id.helpbutton);
 
         // Set click listener for registerButton
         createPassword.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +60,12 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(registerIntent);
             }
         });
-
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegisterActivity.this, HelpActivity.class));
+            }
+        });
         /*
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override

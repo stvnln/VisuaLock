@@ -14,6 +14,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.visualock.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -29,6 +30,9 @@ public final class ActivityRegisterBinding implements ViewBinding {
   public final Button createPassword;
 
   @NonNull
+  public final FloatingActionButton helpbutton;
+
+  @NonNull
   public final TextView loginRedirectText;
 
   @NonNull
@@ -39,11 +43,12 @@ public final class ActivityRegisterBinding implements ViewBinding {
 
   private ActivityRegisterBinding(@NonNull ConstraintLayout rootView,
       @NonNull CardView RegisterCardView, @NonNull Button createPassword,
-      @NonNull TextView loginRedirectText, @NonNull EditText registerEmail,
-      @NonNull EditText registerName) {
+      @NonNull FloatingActionButton helpbutton, @NonNull TextView loginRedirectText,
+      @NonNull EditText registerEmail, @NonNull EditText registerName) {
     this.rootView = rootView;
     this.RegisterCardView = RegisterCardView;
     this.createPassword = createPassword;
+    this.helpbutton = helpbutton;
     this.loginRedirectText = loginRedirectText;
     this.registerEmail = registerEmail;
     this.registerName = registerName;
@@ -88,6 +93,12 @@ public final class ActivityRegisterBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.helpbutton;
+      FloatingActionButton helpbutton = ViewBindings.findChildViewById(rootView, id);
+      if (helpbutton == null) {
+        break missingId;
+      }
+
       id = R.id.loginRedirectText;
       TextView loginRedirectText = ViewBindings.findChildViewById(rootView, id);
       if (loginRedirectText == null) {
@@ -107,7 +118,7 @@ public final class ActivityRegisterBinding implements ViewBinding {
       }
 
       return new ActivityRegisterBinding((ConstraintLayout) rootView, RegisterCardView,
-          createPassword, loginRedirectText, registerEmail, registerName);
+          createPassword, helpbutton, loginRedirectText, registerEmail, registerName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

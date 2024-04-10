@@ -7,6 +7,19 @@
     android:background="#ffff"
     tools:context=".RegisterActivity">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/helpbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="44dp"
+        android:clickable="true"
+        android:contentDescription="Back"
+        app:backgroundTint="@color/lavender"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_help" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/RegisterCardView"
         android:layout_width="0dp"
