@@ -1,13 +1,13 @@
 package com.example.visualock;
 
 import android.content.Context;
+import android.net.Uri;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -31,8 +31,10 @@ public class MyBackend {
     public static String input_email="";
     public static String input_name="";
     public List<String> defaultImages;
+    public List<String> userUploadImages;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseStorage storage;
+
     public Context context;
     public MyBackend()
     {
@@ -50,10 +52,10 @@ public class MyBackend {
     }
 
     // THIS IS UPDATE DB AS CURRENT USER DATA
-    private CompletableFuture<Boolean> pushDatabase(){
+    public CompletableFuture<Boolean> pushDatabase(){
         CompletableFuture<Boolean> future = new CompletableFuture<>();
         FirebaseUser user = auth.getCurrentUser();
-        if(user !=null) {
+        if(isUserLogin()) {
             DocumentReference userRef = firebaseFirestore.collection("users").document(user.getEmail());
             // update Database base on currentUser data.
             userRef.set(userData).addOnCompleteListener(task -> future.complete(true))
@@ -102,8 +104,11 @@ public class MyBackend {
                 //Log.d(TAG, "Error getting document", task.getException());
                 future.complete("false: Get UserData error");
             }
+            /*
             if(!isUserLogin())
                 logOut();
+                */
+
         });
 
         return future;
@@ -168,7 +173,7 @@ public class MyBackend {
                                 // user get in
                                 if (userData == null) {
                                     // database error, let recovery it
-                                    userData= new User(email.split("@")[0]);
+                                    userData= new User(auth.getUid(), email.split("@")[0]);
                                     pushDatabase();
                                 }
                                 future.complete("true:Sign success");
@@ -184,28 +189,20 @@ public class MyBackend {
     }
 
     //THIS REGISTER FOR THE FIRST TIME
-    public CompletableFuture<String> signUp(String email,List<String> clickedImage){
+    public CompletableFuture<String> signUp(String email, String input_name,List<String> clickedImage){
         CompletableFuture<String> future = new CompletableFuture<>();
         // Generation parameters to make password unpredictable
-        Random random = new Random();
-        int[] parameter_int = new int[6];
-        for(int i =0 ;i<5; i++){
-            parameter_int[i] = random.nextInt(3)+8;
-        }
-        String password =generation_Pass(parameter_int,clickedImage);
+
+        String password =generation_Pass(clickedImage,null);
         // logOut all
         logOut();
-        auth.createUserWithEmailAndPassword(email, password)
+        auth.createUserWithEmailAndPassword(email, password.split(";")[1])
                 .addOnSuccessListener(authResult -> {
                     // Login success
                     //Toast.makeText(context,"Account created...",Toast.LENGTH_SHORT).show();
                     if (isUserLogin()) {
-                        // saving parameters as xx:xx:xx:xx
-                        String parameter_String= String.join(":", Arrays.stream(parameter_int)
-                                .mapToObj(String::valueOf)
-                                .toArray(String[]::new));
                         // put user
-                        userData= new User(email.split("@")[0],parameter_String,clickedImage);
+                        userData= new User(auth.getCurrentUser().getUid(),input_name,password.split(";")[0],clickedImage);
                        // Toast.makeText(context,"Saving passcode...",Toast.LENGTH_SHORT).show();
                         pushDatabase().thenAccept(result->{
                             Toast.makeText(context,"Saving done...",Toast.LENGTH_SHORT).show();
@@ -221,33 +218,13 @@ public class MyBackend {
                         future.complete("false:Register Fail");
                     }
                 })
-                .addOnFailureListener(e -> future.complete("false:Log in Exception "+e.getMessage()));
+                .addOnFailureListener(e -> future.complete("false:"+e.getMessage()));
         return future;
     }
 
-    // THIS IS CHECK EMAIL REGISTED OR NOT
-    public CompletableFuture<String> is_Email_Registered(String email){
-        CompletableFuture<String> future = new CompletableFuture<>();
-        //future.complete("true:Email is registered");
-        auth.fetchSignInMethodsForEmail(email)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        List<String> signInMethods = task.getResult().getSignInMethods();
-                        System.out.println("Sign method = "+signInMethods.size());
-                        if (signInMethods != null && !signInMethods.isEmpty()) {
-                            // Email is registered
-                            future.complete("true:Email is registered");
-                        } else {
-                            // Email is not registered
-                            future.complete("false:Email is not registered");
-                        }
-                    } else {
-                        // Error occurred while checking email registration
-                        future.complete("false:Email check error");
-                    }
-                });
-
-        return future;
+    // THIS IS CHANGE PASSWORD BASE ON IMAGE IN CURRENT USER DATA
+    public CompletableFuture<String> changePassword(){
+        return changePassword(generation_Pass());
     }
     // THIS IS CHANGE PASSWORD WITH TEXT INPUT, NO IMAGE
     public CompletableFuture<String> changePassword(String newPassword){
@@ -256,13 +233,6 @@ public class MyBackend {
         if (user != null && !isRoot()) {
             // new password to Authentication
             user.updatePassword(newPassword).addOnCompleteListener(task -> {
-                // Move img pass to normal if avaible
-                for(String image: userData.getImages_pass()) {
-                    if(!userData.getImages().contains(image)) {
-                        userData.insertImages(image);
-                        userData.removeImages_pass(image);
-                    }
-                }
                 // update database
                 pushDatabase().thenAccept(result ->{
                     if(result){
@@ -270,30 +240,50 @@ public class MyBackend {
                     }else{
                         future.complete("false:Change Password Fail");
                     }
-
                 });
             });
         }
         return future;
     }
 
-    // THIS IS CHANGE PASSWORD BASE ON IMAGE IN CURRENT USER DATA
-    public CompletableFuture<String> changePassword(){
+    // THIS IS CHANGE THE EMAIL
+    public CompletableFuture<String> changeEmail(String newEmail){
         CompletableFuture<String> future = new CompletableFuture<>();
-        FirebaseUser user = auth.getCurrentUser();
-        if (user != null && !isRoot()) {
-            //generation pass
-            String newPassword = generation_Pass();
-            // new password to Authentication
-            user.updatePassword(newPassword).addOnCompleteListener(task -> {
-                // update database
-                pushDatabase().thenAccept(result ->{
-                    if(result){
-                        future.complete("true:Change Password Successful");
-                    }else{
-                        future.complete("false:Change Password Fail");
-                    }
-                });
+        if (isUserLogin()) {
+            String oldEmail = auth.getCurrentUser().getEmail();
+            // Querry 1
+            is_Email_Registered(newEmail).thenAccept(result1->{
+                if(!isSucess(result1)) {
+                    // Querry 2
+                    getDatabase().thenAccept(result2->{
+                        if(isSucess(result2)) {
+                            auth.getCurrentUser().updateEmail(newEmail).addOnCompleteListener(task -> {
+                                if(task.isSuccessful()) {
+                                    // Querry 3
+                                    // change database
+                                    pushDatabase().thenAccept(result3 -> {
+                                        if (result3) {
+                                            firebaseFirestore.collection("users").document(oldEmail).delete();
+                                            // change storage (not need, file upload by uID)
+                                            future.complete("true:Change Email Successful");
+                                        } else {
+                                            future.complete("false:Change Email Fail(1)");
+                                        }
+                                    });
+                                }
+                                else{
+                                    future.complete("false:Change Email Fail(2)");
+                                }
+                            });
+                        }
+                        else{
+                            future.complete("false:Change Email Fail(3)");
+                        }
+                    });
+                }
+                else{
+                    future.complete("false:New Email is Existed");
+                }
             });
         }
         return future;
@@ -315,9 +305,8 @@ public class MyBackend {
                 });
         return future;
     }
-    // THIS UPLOAD DEFAULT PICTURE
-    //.... missing here
 
+    /////////////////////////////////////////////////////////////////////// Images Handle ////////////////////////
     // THIS GET Default PICTURE FOR LISTVIEW (PASS TEST)
     public CompletableFuture<String> getDefaultImages(){
         CompletableFuture<String> future = new CompletableFuture<>();
@@ -340,38 +329,143 @@ public class MyBackend {
                     if (count.get() == totalItems) {
                         // All URLs retrieved, do something with listURL
                         defaultImages = listURL;
-                        future.complete("true:Loaded default image "+defaultImages.size());
-                        Toast.makeText(context,"Loaded default image"+defaultImages.size(),Toast.LENGTH_SHORT).show();
+                        future.complete("true:Default image = "+defaultImages.size());
                     }
                 });
             }
+            /*
             if(!isUserLogin())
                 logOut();
+                */
+        });
+        return future;
+    }
+    // THIS for UPLOAD PICTURE
+    public CompletableFuture<String> pushUploadImage(Uri uri,String name){
+        CompletableFuture<String> future = new CompletableFuture<>();
+        if (!isUserLogin()) {
+           future.complete("false:Did not login");
+           return future;
+        }
+
+        StorageReference folderRef = storage.getReference().child(auth.getUid()).child(name);
+        folderRef.putFile(uri).addOnCompleteListener(task -> {
+            if(task.isSuccessful()) {
+                getUploadImages(auth.getUid()).thenAccept(results -> {
+                    if(userUploadImages!=null) {
+                        future.complete("true:User Uploaded Image =  " + userUploadImages.size());
+                        //Toast.makeText(context,"Loaded User Upload image"+userUploadImages.size(),Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        future.complete("false:Uploaded Image Fail");
+                    }
+                });
+            }
+            else{
+                future.complete("false:Upload Fail");
+            }
         });
         return future;
     }
 
+    // THIS GET Upload PICTURE FOR LISTVIEW (PASS TEST)
+    public CompletableFuture<String> getUploadImages(String uID){
+        CompletableFuture<String> future = new CompletableFuture<>();
+        FirebaseUser user = auth.getCurrentUser();
+        if (user == null) {
+            root_Login();
+        }
+        StorageReference folderRef = storage.getReference().child(uID);
+        folderRef.listAll().addOnSuccessListener(listResult -> {
+            List<String> listURL = new ArrayList<>();
+            int totalItems = listResult.getItems().size();
+            if(totalItems==0){
+                future.complete("true:User Upload image (Empty)");
+                //Toast.makeText(context,"Loaded User Upload image (Empty)",Toast.LENGTH_SHORT).show();
+            }
+            AtomicInteger count = new AtomicInteger(0);
+
+            for (StorageReference item : listResult.getItems()) {
+                // Get the download URL for each file
+                item.getDownloadUrl().addOnSuccessListener(uri -> {
+                    // Handle the download URL
+                    listURL.add(uri.toString());
+                    count.incrementAndGet();
+                    if (count.get() == totalItems) {
+                        // All URLs retrieved, do something with listURL
+                        userUploadImages = listURL;
+                        future.complete("true:User Upload image = "+userUploadImages.size());
+                    }
+                });
+            }
+            /*
+            if(!isUserLogin())
+                logOut();
+
+             */
+        }).addOnFailureListener(task ->{
+            future.complete("false:Get Fail = "+task.getMessage());
+        });
+        return future;
+    }
+
+    // THIS IS CHECK EMAIL REGISTED OR NOT
+    public CompletableFuture<String> is_Email_Registered(String email){
+        CompletableFuture<String> future = new CompletableFuture<>();
+        //future.complete("true:Email is registered");
+        auth.fetchSignInMethodsForEmail(email)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        List<String> signInMethods = task.getResult().getSignInMethods();
+                        System.out.println("signInMethods="+signInMethods.size());
+                        if (signInMethods != null && !signInMethods.isEmpty()) {
+                            // Email is registered
+                            future.complete("true:Email is registered");
+                        } else {
+                            // Email is not registered
+                            future.complete("false:Email is not registered");
+                        }
+                    } else {
+                        // Error occurred while checking email registration
+                        future.complete("false:Email check error");
+                    }
+                });
+
+        return future;
+    }
     public String getCurrentEmail(){
         if(auth.getCurrentUser()==null) return "";
         return auth.getCurrentUser().getEmail();
     }
-
     private String generation_Pass() {
-        int[] parameters = Arrays.stream(userData.getParameter().split(":"))
-                .mapToInt(Integer::parseInt)
-                .toArray();
-        return generation_Pass(parameters,userData.getImages_pass());
+        return generation_Pass(userData.getImages_pass(), userData.getParameter());
     }
-    private String generation_Pass(int[] paramters,List<String> images) {
+    private String generation_Pass(List<String> images, String paramters) {
         StringBuilder pass = new StringBuilder();
-        int i =0;
+        Random random = new Random();
+        int[] parameter_int = new int[6];
+        for(int i =0 ;i<5; i++){
+            if(paramters==null)
+                parameter_int[i] = random.nextInt(3)+8;
+            else
+                parameter_int[i] = Integer.parseInt(paramters.split(":")[i]);
+        }
+        String parameter_String = "";
+        if(paramters==null) {
+            // saving parameters as xx:xx:xx:xx
+            parameter_String= String.join(":", Arrays.stream(parameter_int)
+                    .mapToObj(String::valueOf)
+                    .toArray(String[]::new));
+            parameter_String+=";";
+        }
+        int j =0;
         for (String image: images
         ) {
             String target = image.substring(image.indexOf("token="));
-            pass.append(target.substring(target.length() / 2, target.length() / 2 + paramters[i]));
-            i++;
+            pass.append(target.substring(target.length() / 2, target.length() / 2 + parameter_int[j]));
+            j++;
         }
-        return pass.toString();
+        return parameter_String+pass;
     }
 
     private boolean isRoot(){
