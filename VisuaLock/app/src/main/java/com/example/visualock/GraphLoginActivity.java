@@ -24,6 +24,7 @@ public class GraphLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph_login);
         myBackend = new MyBackend();
+        myBackend.context = GraphLoginActivity.this;
         // Check if the user is already authenticated
         if (myBackend.isUserLogin()) {
             myBackend.require = "";
@@ -31,9 +32,7 @@ public class GraphLoginActivity extends AppCompatActivity {
             startActivity(new Intent(GraphLoginActivity.this, MainActivity.class));
             finish();
         }
-
         loginEmail = findViewById(R.id.login_email);
-
         registerRedirectText = findViewById(R.id.registerRedirectText);
         loginByTextual = findViewById(R.id.loginByTextual);
         forgot_passRedirectText = findViewById(R.id.forgot_passRedirectText);

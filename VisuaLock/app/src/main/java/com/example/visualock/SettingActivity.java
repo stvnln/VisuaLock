@@ -1,5 +1,4 @@
 package com.example.visualock;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,15 +8,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import androidx.annotation.NonNull;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+
 
 import android.widget.CompoundButton;
 
@@ -25,12 +22,21 @@ public class SettingActivity extends AppCompatActivity {
 
     private CheckBox checkBoxAgree;
     private Button buttonDeleteAccount;
+    private MyBackend myBackend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
+        myBackend = new MyBackend();
+        myBackend.context = SettingActivity.this;
+        if(!myBackend.isUserLogin()){
+            myBackend.require = "";
+            myBackend.input_email ="";
+            startActivity(new Intent(SettingActivity.this, GraphLoginActivity.class));
+            finish();
+        }
         ImageView backButton = findViewById(R.id.backButton);
         checkBoxAgree = findViewById(R.id.checkBoxAgree);
         buttonDeleteAccount = findViewById(R.id.buttonDeleteAccount);
@@ -60,76 +66,20 @@ public class SettingActivity extends AppCompatActivity {
         buttonDeleteAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteAccount();
-            }
-        });
-    }
-
-    private void deleteAccount() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            final String userEmail = user.getEmail();
-            final String userID = user.getUid();
-            FirebaseFirestore.getInstance().collection("users").document(userEmail)
-                    .delete()
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            deleteAuthCredentials(user);
-                            deleteStorageFolder(userID);
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(SettingActivity.this, "Failed to delete account: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            e.printStackTrace();
-                        }
-                    });
-        } else {
-            Toast.makeText(SettingActivity.this, "User is not authenticated", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-
-    private void deleteAuthCredentials(FirebaseUser user) {
-        user.delete()
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(SettingActivity.this, "Account deleted successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(SettingActivity.this, GraphLoginActivity.class));
-                        finish();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(SettingActivity.this, "Failed to delete account: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        e.printStackTrace();
-                    }
+                buttonDeleteAccount.setEnabled(false);
+                myBackend.deleteAccount().thenAccept(results ->{
+                    Toast.makeText(SettingActivity.this,myBackend.getMessenge(results),Toast.LENGTH_SHORT).show();
+                    if(myBackend.isSucess(results)){
+                       startActivity(new Intent(SettingActivity.this, GraphLoginActivity.class));
+                       finish();
+                   }
+                   else{
+                       buttonDeleteAccount.setEnabled(true);
+                   }
                 });
-    }
-
-    private void deleteStorageFolder(String userID) {
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-        StorageReference folderRef = storageRef.child(userID);
-
-        folderRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(SettingActivity.this, "Storage folder deleted successfully", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(SettingActivity.this, "Failed to delete storage folder: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
             }
         });
     }
-
     private void navigateToMenuFragment() {
         Intent intent = new Intent(SettingActivity.this, MainActivity.class);
         intent.putExtra("menuFragment", true);
