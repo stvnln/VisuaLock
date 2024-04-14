@@ -20,6 +20,8 @@ import android.graphics.Color;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class GraphPasswordActivity extends AppCompatActivity {
@@ -58,15 +60,22 @@ public class GraphPasswordActivity extends AppCompatActivity {
         public View getView(final int position, View convertView, ViewGroup parent) {
             ImageView imageView;
             String chosenURL = myListImages.get(position);
-            if (convertView == null) {
-                imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200));
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                Picasso.get().load(chosenURL).into(imageView);
-            } else {
-                imageView = (ImageView) convertView;
+            // build content view
+            imageView = new ImageView(mContext);
+            imageView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200));
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            if(myBackend.mapBitmap.containsKey(chosenURL)){
+                imageView.setImageBitmap(myBackend.mapBitmap.get(chosenURL));
             }
-
+            else{
+                try{
+                    myBackend.mapBitmap.put(chosenURL,Picasso.get().load(chosenURL).get());
+                    imageView.setImageBitmap(myBackend.mapBitmap.get(chosenURL));
+                }
+                catch (Exception exception){
+                    Picasso.get().load(chosenURL).into(imageView);
+                }
+            }
 
             // Apply transparent grey overlay if the image is clicked
             if (clickedImage.contains(chosenURL)) {
@@ -111,6 +120,17 @@ public class GraphPasswordActivity extends AppCompatActivity {
         clickedImage = new ArrayList<>();
         myBackend = new MyBackend();
         myBackend.context= GraphPasswordActivity.this;
+        if (myBackend.isUserLogin()) {
+            Toast.makeText(GraphPasswordActivity.this,"User logined as "+myBackend.getCurrentEmail(),Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(GraphPasswordActivity.this, MainActivity.class));
+            finish();
+        }
+        if(myBackend.input_email.equals("")){
+            myBackend.require = "";
+            myBackend.input_email ="";
+            startActivity(new Intent(GraphPasswordActivity.this, GraphLoginActivity.class));
+            finish();
+        }
 
         List<String> selectedImages = new ArrayList<>();
         ListView[] rowListView = new ListView[6];
@@ -165,8 +185,11 @@ public class GraphPasswordActivity extends AppCompatActivity {
                                             }
                                         }
                                     if (myBackend.isSucess(results2)) {
-                                        if (myBackend.userUploadImages != null)
-                                            for (String image : myBackend.userUploadImages
+                                        if (myBackend.userUploadImages != null) {
+                                            List<String> tmp = new ArrayList<>();
+                                            tmp.addAll(myBackend.userUploadImages);
+                                            Collections.shuffle(tmp);
+                                            for (String image : tmp
                                             ) {
                                                 if (!selectedImages.contains(image)) {
                                                     selectedImages.add(image);
@@ -174,11 +197,15 @@ public class GraphPasswordActivity extends AppCompatActivity {
                                                     if (n2 <= 0) break;
                                                 }
                                             }
+                                        }
                                     }
                                     if (myBackend.isSucess(results3)) {
                                         if (n2 > 0) {
-                                            if(myBackend.defaultImages!=null)
-                                                for (String image : myBackend.defaultImages
+                                            if(myBackend.defaultImages!=null) {
+                                                List<String> tmp = new ArrayList<>();
+                                                tmp.addAll(myBackend.defaultImages);
+                                                Collections.shuffle(tmp);
+                                                for (String image : tmp
                                                 ) {
                                                     if (!selectedImages.contains(image)) {
                                                         selectedImages.add(image);
@@ -186,13 +213,14 @@ public class GraphPasswordActivity extends AppCompatActivity {
                                                         if (n2 <= 0) break;
                                                     }
                                                 }
+                                            }
                                         }
                                     }
-                                    System.out.println(selectedImages.get(5));
-                                    //Collections.shuffle(selectedImages);
+                                    Collections.shuffle(selectedImages);
                                     for(int i=0; i<6; i++){
-                                        rowListView[i].setAdapter(new PasswordImageAdapter(this, selectedImages.subList(6*i,6*(i+1))));
+                                        rowListView[i].setAdapter(new PasswordImageAdapter(this, selectedImages.subList(6*i,6*(i+1)) ));
                                     }
+
                                 }
                                 catch (Exception ex){
                                     Toast.makeText(GraphPasswordActivity.this, "Error:"+ex.getMessage(), Toast.LENGTH_SHORT).show();
@@ -216,7 +244,10 @@ public class GraphPasswordActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myBackend.require = "";
+                myBackend.input_email ="";
                 startActivity(new Intent(GraphPasswordActivity.this, GraphLoginActivity.class));
+                finish();
             }
         });
 

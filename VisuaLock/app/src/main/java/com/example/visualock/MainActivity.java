@@ -1,5 +1,6 @@
 package com.example.visualock;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -15,6 +16,7 @@ import com.example.visualock.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private MyBackend myBackend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
             navigateToMenuFragment();
         } else if (getIntent().getBooleanExtra("dashboardFragment", false)) {
             navigateToDashboardFragment();
+        }
+        myBackend = new MyBackend();
+        myBackend.context = MainActivity.this;
+        if(!myBackend.isUserLogin()){
+            myBackend.require = "";
+            myBackend.input_email ="";
+            startActivity(new Intent(MainActivity.this, GraphLoginActivity.class));
+            finish();
         }
     }
     private void navigateToMenuFragment() {
